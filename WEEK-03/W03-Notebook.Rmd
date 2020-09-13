@@ -1,17 +1,187 @@
 ---
-title: "R Notebook sandbox"
-output: html_notebook
+title: 'R Notebook sandbox: Assignment "Datasets" (10 points)'
+author: "Nathan Shine"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    df_print: paged
+    toc: yes
+    toc_depth: '4'
+  html_notebook:
+    df_print: paged
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+email: nathan.shine@wsu.edu
+course: STATS 419 Survey of Multivariate Analysis
+Instructor: Monte J. Shaffer
+wsu-id: '11574276'
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
-
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
-
-```{r}
+```{r,include, message=FALSE}
 library(devtools);
 my.source = 'local';
-local.path = 'C:/Users/Nathan/Documents/GitHub/WSU_STATS419_FALL2020';
+local.path = 'C:/Users/Nathan/Documents/GitHub/WSU_STATS419_FALL2020/';
 source(paste0(local.path, 'functions/libraries.r'), local=T)
-source(paste0(local.path, 'functions/functions-imdb.R'), local=T)
+```
 
+# Matrix
+
+Create the "rotate matrix" functions as described in lectures.  Apply to the example "myMatrix".
+```{r,matrix-include}
+source( paste0(local.path,"functions/functions-matrix.R"), local=T );
+
+myMatrix = matrix ( c (
+	1, 0, 2,
+	0, 3, 0,
+	4, 0, 5
+	), nrow=3, byrow=T);
+```
+
+```{r,matrix-demo}
+transposeMatrix(myMatrix);
+rotateMatrix90(myMatrix);
+rotateMatrix180(myMatrix);
+rotateMatrix270(myMatrix);
+```
+
+# IRIS
+Recreate the graphic for the IRIS Data Set using R.  Same titles, same scales, same colors.  See: https://en.wikipedia.org/wiki/Iris_flower_data_set#/media/File:Iris_dataset_scatterplot.svg
+
+```{r,iris-demo}
+pairs(iris[1:4],main="Iris Data (red=setosa,green=versicolor,blue=virginica)", pch=21,
+  bg=c("red","green3","blue")[unclass(iris$Species)])
+```
+
+Sentences:  [Right 2-3 sentences concisely defining the IRIS Data Set.  Maybe search KAGGLE for a nice template.  Be certain the final writeup are your own sentences (make certain you modify what you find, make it your own, but also cite where you got your ideas from).  NOTE:  Watch the video, Figure 8 has a +5 EASTER EGG.]
+
+The iris dataset contains 50 observations from three types of the iris flower (Setosa, Versicolor, and Virginica). Each observation has the petal length, petal width, sepal length, and sepal width recorded in centimeters. Ideas came from: https://www.kaggle.com/arshid/iris-flower-dataset
+
+# Personality
+
+## Cleanup RAW
+Import "personality-raw.txt" into R.  Remove the V00 column.  Create two new columns from the current column "date_test":  year and week. Stack Overflow may help:  https://stackoverflow.com/questions/22439540/how-to-get-week-numbers-from-dates ... Sort the new data frame by YEAR, WEEK so the newest tests are first ... The newest tests (e.g., 2020 or 2019) are at the top of the data frame.  Then remove duplicates using the unique function based on the column "md5_email".  Save the data frame in the same "pipe-delimited format" ( | is a pipe ) with the headers.  You will keep the new data frame as "personality-clean.txt" for future work (you will not upload it at this time).  In the homework, for this tasks, report how many records your raw dataset had and how many records your clean dataset has.
+
+```{r, personalityCleanup}
+dfLocation <- paste0(local.path, 'datasets/personality-raw.txt');
+df_raw <- read.table(dfLocation, header=T, sep='|');
+df <- df_raw[,-3]
+df$date_test <- as.POSIXct(strptime(df$date_test, '%m/%d/%Y %H:%M'))
+df$year <- year(df$date_test)
+df$week <- week(df$date_test)
+df <- df[order(-df$year,-df$week),]
+df <- df[match(unique(df$md5_email),df[,1]),]
+dfCleanLocation <- paste0(local.path, 'datasets/personality-clean.txt')
+write.table(df, file=dfCleanLocation, sep='|')
+```
+
+# Variance and Z-scores
+
+Write functions for doSummary and sampleVariance and doMode ... test these functions in your homework on the "monte.shaffer@gmail.com" record from the clean dataset.  Report your findings.  For this "monte.shaffer@gmail.com" record, also create z-scores.  Plot(x,y) where x is the raw scores for "monte.shaffer@gmail.com" and y is the z-scores from those raw scores.  Include the plot in your assignment, and write 2 sentences describing what pattern you are seeing and why this pattern is present.
+
+## Variance
+```{r, variance}
+source( paste0(local.path,"functions/functions-variance.R"), local=T );
+
+monteShafferRecord <- df[1,3:62];
+doSummary(df[1,3:62])
+
+```
+## Z-Scores
+```{r, zScores}
+msZScores <- doZScores(monteShafferRecord, doSummary(monteShafferRecord))
+combinedMS <- as.data.frame(t(rbind(monteShafferRecord, msZScores)))
+colnames(combinedMS) <- c('raw', 'zscore')
+plot(combinedMS$raw, combinedMS$zscore, main = 'Monte Shaffer Record', xlab = 'Raw Score', ylab = 'Z-Score')
+```
+
+# Will vs. Denzel
+
+```{r, imdb-include, message=FALSE}
+source(paste0(local.path, 'functions/functions-imdb.R'), local=T)
+```
+
+## Will Smith
+```{r, will}
+nmid = "nm0000226";
+will = grabFilmsForPerson(nmid);
+```
+
+## Denzel Washington
+```{r, denzel}
+nmid = "nm0000243";
+denzel = grabFilmsForPerson(nmid);
+```
+
+## BoxPlot of Top-50 movies using Raw Dollars
+```{r,mychunk-boxplot-raw}
+par(mfrow=c(1,2));
+	boxplot(will$movies.50$millions, main=will$name, ylim=c(0,360), ylab="Raw Millions" );
+	boxplot(denzel$movies.50$millions, main=denzel$name, ylim=c(0,360), ylab="Raw Millions" );
+	
+	par(mfrow=c(1,1));
+```
+
+
+## Side-by-Side Comparisions
+Build side-by-side box plots on several of the variables (including #6) to compare the two movie stars.  After each box plot, write 2+ sentence describing what you are seeing, and what conclusions you can logically make.  You will need to review what the box plot is showing with the box portion, the divider in the box, and the whiskers.
+
+### Adjusted Dollars (2000)
+```{r, adjustDollars}
+inflationLocation <- paste0(local.path, 'datasets/inflation.txt');
+inflation <- read.table(inflationLocation, header=T, sep='|')
+inflation$dollar <- inflation$dollar/1000000
+dollarReference <- inflation[inflation$year==2000,]$dollar
+
+
+exp <- merge(will$movies.50, inflation[1:2], by='year')
+exp$millions.2000 <- (dollarReference/exp$dollar)*exp$millions
+exp <- subset(exp, select = -c(dollar))
+will$movies.50 <- exp
+
+exp <- merge(denzel$movies.50, inflation[1:2], by='year')
+exp$millions.2000 <- (dollarReference/exp$dollar)*exp$millions
+exp <- subset(exp, select = -c(dollar))
+denzel$movies.50 <- exp
+
+par(mfrow=c(1,2));
+boxplot(will$movies.50$millions.2000, main=will$name, ylim=c(0,350), ylab="Millions in 2000" );
+boxplot(denzel$movies.50$millions.2000, main=denzel$name, ylim=c(0,350), ylab="Millions in 2000");
+```
+
+### Total Votes  (Divide by 1,000)
+```{r,votes}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$votes/1000, main=will$name, ylim=c(0,600), ylab="Votes (in thousands)" );
+boxplot(denzel$movies.50$votes/1000, main=denzel$name, ylim=c(0,600), ylab="Votes (in thousands)");
+```
+
+### Average Ratings
+```{r,ratings}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$ratings, main=will$name, ylim=c(0,10), ylab="Rating" );
+boxplot(denzel$movies.50$ratings, main=denzel$name, ylim=c(0,10), ylab="Rating");
+```
+
+### Runtime
+```{r,runtime}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$minutes, main=will$name, ylim=c(75,205), ylab="Runtime" );
+boxplot(denzel$movies.50$minutes, main=denzel$name, ylim=c(75,205), ylab="Runtime");
+```
+
+### Metacritic
+```{r,metacritic}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$metacritic, main=will$name, ylim=c(0,100), ylab="Metacritic Score" );
+boxplot(denzel$movies.50$metacritic, main=denzel$name, ylim=c(0,100), ylab="Metacritic Score");
+```
+
+### Year
+```{r,year}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$year, main=will$name, ylim=c(1980,2020), ylab="Year" );
+boxplot(denzel$movies.50$year, main=denzel$name, ylim=c(1980,2020), ylab="Year");
 ```

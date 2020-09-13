@@ -13,17 +13,12 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
 ```{r}
 library(devtools); # devtools is required for function source_url() to work...
 my.source = 'github';
-github.path = 'https://github.com/nshine787/WSU_STATS419_FALL2020';
-source_url(paste0(github.path, 'master/functions/libraries.R'));
+github.path = 'https://raw.githubusercontent.com/nshine787/WSU_STATS419_FALL2020/';
+
+source_url(paste0(github.path, 'master/functions/libraries.r'));
 source_url(paste0(github.path, 'master/functions/functions-imdb.R'));
 
 ```
