@@ -1,19 +1,26 @@
 ---
-title: "R Notebook sandbox"
+title: "Week 03 Assignment 02_datasets"
 author: "Nathan Shine"
-email: "nathan.shine@wsu.edu"
-wsu-id: "11574276"
-course: "STATS 419 Survey of Multivariate Analysis"
-Instructor: "Monte J. Shaffer"
 date: "`r format(Sys.time(), '%d %B %Y')`"
-output: pdf_document
+output:
+  pdf_document:
+    citation_package: natbib
+    latex_engine: pdflatex
+    template: ./../latex-templates/homework2.tex
+    fig_caption: yes
+    number_sections: true
+  html_document:
+    df_print: paged
+course: "STATS 419 Survey of Multivariate Analysis"
+course-short: STATS419
+instructor: Monte J. Shaffer
+email: nathan.shine@wsu.edu
+fig_caption: true
+number_sections: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
-```{r}
+```{r, functions-include, message=FALSE, echo = FALSE}
 library(devtools); # devtools is required for function source_url() to work...
 my.source = 'github';
 github.path = 'https://raw.githubusercontent.com/nshine787/WSU_STATS419_FALL2020/';
@@ -23,17 +30,180 @@ source_url(paste0(github.path, 'master/functions/functions-imdb.R'));
 
 ```
 
+# Matrix
 
-```{r cars}
-summary(cars)
+Create the "rotate matrix" functions as described in lectures.  Apply to the example "myMatrix".
+```{r,matrix-include,echo=FALSE}
+source( paste0(github.path,"master/functions/functions-matrix.R"), local=T );
+
+myMatrix = matrix ( c (
+	1, 0, 2,
+	0, 3, 0,
+	4, 0, 5
+	), nrow=3, byrow=T);
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r,matrix-demo}
+myMatrix;
+transposeMatrix(myMatrix);
+rotateMatrix90(myMatrix);
+rotateMatrix180(myMatrix);
+rotateMatrix270(myMatrix);
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+# IRIS
+Recreate the graphic for the IRIS Data Set using R.  Same titles, same scales, same colors.  See: https://en.wikipedia.org/wiki/Iris_flower_data_set#/media/File:Iris_dataset_scatterplot.svg
+
+```{r,iris-demo}
+pairs(iris[1:4],main="Iris Data (red=setosa,green=versicolor,blue=virginica)", pch=21,
+  bg=c("red","green3","blue")[unclass(iris$Species)])
+```
+
+The iris dataset contains 50 observations from three types of the iris flower (Setosa, Versicolor, and Virginica). Each observation has the petal length, petal width, sepal length, and sepal width recorded in centimeters. Ideas came from: https://www.kaggle.com/arshid/iris-flower-dataset
+
+# Personality
+
+## Cleanup RAW
+Import "personality-raw.txt" into R.  Remove the V00 column.  Create two new columns from the current column "date_test":  year and week. Stack Overflow may help:  https://stackoverflow.com/questions/22439540/how-to-get-week-numbers-from-dates ... Sort the new data frame by YEAR, WEEK so the newest tests are first ... The newest tests (e.g., 2020 or 2019) are at the top of the data frame.  Then remove duplicates using the unique function based on the column "md5_email".  Save the data frame in the same "pipe-delimited format" ( | is a pipe ) with the headers.  You will keep the new data frame as "personality-clean.txt" for future work (you will not upload it at this time).  In the homework, for this tasks, report how many records your raw dataset had and how many records your clean dataset has.
+
+```{r, personalityCleanup, echo=FALSE}
+dfLocation <- paste0(github.path, 'master/datasets/personality-raw.txt');
+df_raw <- read.table(dfLocation, header=T, sep='|');
+df <- df_raw[,-3]
+df$date_test <- as.POSIXct(strptime(df$date_test, '%m/%d/%Y %H:%M'))
+df$year <- year(df$date_test)
+df$week <- week(df$date_test)
+df <- df[order(-df$year,-df$week),]
+df <- df[match(unique(df$md5_email),df[,1]),]
+```
+
+\
+Raw Personality records:
+```{r, personalityDimensionsRaw}
+dim(df_raw)[1];
+```
+
+Cleaned Personality records:
+```{r, personalityDimensionsClean}
+dim(df)[1];
+```
+
+
+# Variance and Z-scores
+
+Write functions for doSummary and sampleVariance and doMode ... test these functions in your homework on the "monte.shaffer@gmail.com" record from the clean dataset.  Report your findings.  For this "monte.shaffer@gmail.com" record, also create z-scores.  Plot(x,y) where x is the raw scores for "monte.shaffer@gmail.com" and y is the z-scores from those raw scores.  Include the plot in your assignment, and write 2 sentences describing what pattern you are seeing and why this pattern is present.
+
+## Variance
+```{r, variance-include, echo=FALSE}
+source( paste0(github.path,"master/functions/functions-variance.R"), local=T );
+monteShafferRecord <- df[1,3:62];
+doSummary(df[1,3:62])
+```
+
+
+## Z-Scores
+```{r, zScores, echo=FALSE}
+msZScores <- doZScores(monteShafferRecord, doSummary(monteShafferRecord))
+combinedMS <- as.data.frame(t(rbind(monteShafferRecord, msZScores)))
+colnames(combinedMS) <- c('raw', 'zscore')
+plot(combinedMS$raw, combinedMS$zscore, main = 'Monte Shaffer Record', xlab = 'Raw Score', ylab = 'Z-Score')
+```
+\
+There appear to be not many points on this graph, but many of the z-scores are the same so there are many points on top of one another. The reason many have the same z-scores is because the user can only choose between six values on the survey, even though on this record only five of the values were picked.
+
+
+
+# Will vs. Denzel
+
+```{r, imdb-include, message=FALSE, echo=FALSE, cache=TRUE}
+source(paste0(github.path, 'master/functions/functions-imdb.R'), local=T)
+
+nmid = "nm0000226";
+will = grabFilmsForPerson(nmid);
+
+nmid = "nm0000243";
+denzel = grabFilmsForPerson(nmid);
+```
+
+## BoxPlot of Top-50 movies using Raw Dollars
+```{r,mychunk-boxplot-raw, echo=FALSE, fig.cap="\\label{fig:figs}Raw Millions for Will Smith and Denzel Washington: IMDB(2020)"}
+par(mfrow=c(1,2));
+	boxplot(will$movies.50$millions, main=will$name, ylim=c(0,360), ylab="Raw Millions" );
+	boxplot(denzel$movies.50$millions, main=denzel$name, ylim=c(0,360), ylab="Raw Millions" );
+	
+	par(mfrow=c(1,1));
+```
+
+## Side-by-Side Comparisions
+Build side-by-side box plots on several of the variables (including #6) to compare the two movie stars.  After each box plot, write 2+ sentence describing what you are seeing, and what conclusions you can logically make.  You will need to review what the box plot is showing with the box portion, the divider in the box, and the whiskers.
+
+### Adjusted Dollars (2000)
+```{r, adjustDollars, echo=FALSE, fig.cap="\\label{fig:figs}Adjusted Millions for Will Smith and Denzel Washington: IMDB(2020)"}
+inflationLocation <- paste0(github.path, 'master/datasets/inflation.txt');
+inflation <- read.table(inflationLocation, header=T, sep='|')
+inflation$dollar <- inflation$dollar/1000000
+dollarReference <- inflation[inflation$year==2000,]$dollar
+
+
+exp <- merge(will$movies.50, inflation[1:2], by='year')
+exp$millions.2000 <- (dollarReference/exp$dollar)*exp$millions
+exp <- subset(exp, select = -c(dollar))
+will$movies.50 <- exp
+
+exp <- merge(denzel$movies.50, inflation[1:2], by='year')
+exp$millions.2000 <- (dollarReference/exp$dollar)*exp$millions
+exp <- subset(exp, select = -c(dollar))
+denzel$movies.50 <- exp
+
+par(mfrow=c(1,2));
+boxplot(will$movies.50$millions.2000, main=will$name, ylim=c(0,350), ylab="Millions in 2000" );
+boxplot(denzel$movies.50$millions.2000, main=denzel$name, ylim=c(0,350), ylab="Millions in 2000");
+```
+\
+Here we can see that although they have around the same average, the movies Will Smith has starred in have a lot more box office potential, than the movies of Denzel Washington. The upper quartile of Smith is higher than the maximum of Washington. The lower quartiles for both are probably comparable as well as their minimums.
+
+### Total Votes  (Divide by 1,000)
+```{r,votes, echo=FALSE}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$votes/1000, main=will$name, ylim=c(0,600), ylab="Votes (in thousands)" );
+boxplot(denzel$movies.50$votes/1000, main=denzel$name, ylim=c(0,600), ylab="Votes (in thousands)");
+```
+\
+From this plot we can see that the movies of Will Smith generally receive more votes than the movies of Denzel Washington. We see this because the mean and upper quartile of Smith's movies are notably higher than those of Washington's.
+
+### Average Ratings
+```{r,ratings, echo=FALSE}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$ratings, main=will$name, ylim=c(0,10), ylab="Rating" );
+boxplot(denzel$movies.50$ratings, main=denzel$name, ylim=c(0,10), ylab="Rating");
+```
+\
+Here we can see that Denzel Washington’s movies have rated about a 7, a half point higher on average than Will Smith’s movies which would be about 6.5. We can also tell that both actors movies generally do not rate too far apart, but the maximum and minimum for Will Smith have a great up and down. Also curious to note is the lowest rated movie “Student of the Year 2,” which is an Indian movie that Will Smith made a special appearance in.
+
+### Runtime
+```{r,runtime, echo=FALSE}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$minutes, main=will$name, ylim=c(75,205), ylab="Runtime" );
+boxplot(denzel$movies.50$minutes, main=denzel$name, ylim=c(75,205), ylab="Runtime");
+```
+\
+Lastly, we can look at the runtime to find that Denzel Washington’s movies run about ten minutes longer than Will Smith’s movies. However, both have a minimum and maximum that is relatively the same. The one exception to this is Washington’s role in the movie “Malcolm X,” which has a runtime of 202 minutes.
+
+### Metacritic
+```{r,metacritic, echo=FALSE}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$metacritic, main=will$name, ylim=c(0,100), ylab="Metacritic Score" );
+boxplot(denzel$movies.50$metacritic, main=denzel$name, ylim=c(0,100), ylab="Metacritic Score");
+```
+\
+Looking at the Metacritic Scores confirms what was gathered from the IMDB ratings. An average Denzel Washington movie rates higher than the average Will Smith movie by about 5 points on a 100 point scale (or 0.5 on a 10 point scale). In addition Will Smith's movies only have a slightly higher upside than the average while having a much lower floor (lower quartile). The reverse is true for Denzel Washington's movies, which have an upside which is about equivalent with the highest rated Will Smith movie, and they have a higher floor which is about equivalent to the average of Will Smith.
+
+### Year
+```{r,year, echo=FALSE}
+par(mfrow=c(1,2));
+boxplot(will$movies.50$year, main=will$name, ylim=c(1980,2020), ylab="Year" );
+boxplot(denzel$movies.50$year, main=denzel$name, ylim=c(1980,2020), ylab="Year");
+```
+
+\
+This plot shows us that Will Smith has been more active recently than Denzel Washington. It also shows that Denzel Washington has been in the movie business for much longer than Will Smith. Most of Will Smith's movies were released between 2000 and about 2015, while Denzel Washington's most active period was from the 1990s and 2000s.
