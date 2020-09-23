@@ -1,2 +1,2 @@
 # WSU_STATS419_FALL2020
-Course Information
+Coursework for STATS 419: Introduction to Multivariate Statistics
