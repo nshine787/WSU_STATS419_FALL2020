@@ -1,0 +1,73 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(measurements)
+measure.student = read.csv("measure-3fce10bbeef92f3fcf4937defb21c93e.txt", header=TRUE, sep="|");
+measure.student[measure.student$units == 'in',]
+
+columnsToConvert = colnames(measure.student[,4:(ncol(measure.student)-11)])
+measure.student[measure.student$units == 'in',columnsToConvert] = conv_unit(measure.student[measure.student$units=='in',columnsToConvert],'inch','cm')
+
+correlations = cor(measure.student[,4:(ncol(measure.student)-11)])
+correlations[lower.tri(correlations,diag=TRUE)] = NA
+
+```
+```{r, new-data}
+#Convert data to cm
+measure.students = read.csv('C:/Users/Nathan/Desktop/Stat419/measure-students.txt', header=TRUE, sep='|')
+inchNames = c('in', 'In', 'inches', 'Inch')
+rowsToConvert = measure.students$units %in% inchNames
+columnsToConvert = colnames(measure.students[,4:26])
+measure.students[rowsToConvert,columnsToConvert] = conv_unit(measure.students[rowsToConvert,columnsToConvert],'inch','cm')
+measure.students$units = 'cm'
+
+#Clean data for the gender, writing, and swinging variables
+measure.students[measure.students$gender %in% c('M','male','Male','m'),'gender'] = 'm'
+measure.students[measure.students$gender %in% c('F','female','Female','f'),'gender'] = 'f'
+measure.students[!(measure.students$gender %in% c('m','f')),'gender'] = 'nb'
+measure.students$gender = as.factor(measure.students$gender)
+measure.students$writing = as.factor(tolower(measure.students$writing))
+measure.students$swinging = as.factor(substr(tolower(measure.students$swinging),1,1))
+
+#Clean data for the eye variable
+errorEntry = na.omit(measure.students$eye == 'brown')
+measure.students[errorEntry,'eye_color'] = 'brown'
+measure.students[errorEntry,'eye'] = 'left'
+measure.students$eye = substr(tolower(measure.students$eye),1,1)
+measure.students[measure.students$eye %in% c('b','e'),'eye'] = 'b'
+measure.students$eye = as.factor(measure.students$eye)
+
+#Clean data for the eye color variable
+measure.students[measure.students$eye_color == 'blue/green','eye_color'] = 'blue-green'
+measure.students$eye_color = as.factor(tolower(measure.students$eye_color))
+
+#Clean data for the ethnicity variable
+measure.students$ethnicity = tolower(measure.students$ethnicity)
+measure.students[measure.students$ethnicity == 'asain','ethnicity'] = 'asian'
+measure.students[measure.students$ethnicity == 'caucasain','ethnicity'] = 'caucasian'
+
+measure.students[measure.students$ethnicity %in% c('anglo','caucasian','white italian', 'white non-hispanic'),'ethnicity'] = 'white'
+measure.students[measure.students$ethnicity == 'african american','ethnicity'] = 'black'
+measure.students[measure.students$ethnicity %in% c('latin american', 'latino'),'ethnicity'] = 'hispanic'
+measure.students[measure.students$ethnicity %in% c('chinese','indian','japanese','korean','laotian','filipino'),'ethnicity'] = 'asian'
+measure.students[!(measure.students$ethnicity %in% c('asian','black','hispanic','native american','pacific islander','white')),'ethnicity'] = 'mixed'
+measure.students$ethnicity = as.factor(measure.students$ethnicity)
+```
+
+
+```{r, explore-frequencies}
+barplot(sort(table(measure.students$ethnicity),decreasing=TRUE))
+barplot(sort(table(measure.students$eye_color),decreasing=TRUE))
+barplot(sort(table(measure.students$writing),decreasing=TRUE))
+barplot(sort(table(measure.students$swinging),decreasing=TRUE))
+barplot(sort(table(measure.students$eye),decreasing=TRUE))
+
+```
+
