@@ -20,62 +20,28 @@ correlations[lower.tri(correlations,diag=TRUE)] = NA
 
 ```
 ```{r, new-data}
-#Convert data to cm
-raw_measure.students = read.csv('C:/Users/Nathan/Desktop/Stat419/measure-students.txt', header=TRUE, sep='|')
-measure.students = unique(raw_measure.students)
-measure.students[measure.students$person_id == '81a9f3915f64dc6edd329b89bea87d5e', 'units'] = 'cm'
-inchNames = c('in', 'In', 'inches', 'Inch')
-rowsToConvert = measure.students$units %in% inchNames
-columnsToConvert = colnames(measure.students[,4:26])
-measure.students[rowsToConvert,columnsToConvert] = conv_unit(measure.students[rowsToConvert,columnsToConvert],'inch','cm')
-measure.students$units = 'cm'
+github.path = 'https://raw.githubusercontent.com/nshine787/WSU_STATS419_FALL2020/master/';
+local.path = 'C:/Users/Nathan/Documents/GitHub/WSU_STATS419_FALL2020/';
+source(paste0(local.path, 'functions/functions-project-measure.R'))
 
-#Clean data for the gender, writing, and swinging variables
-measure.students[measure.students$gender %in% c('M','male','Male','m'),'gender'] = 'm'
-measure.students[measure.students$gender %in% c('F','female','Female','f'),'gender'] = 'f'
-measure.students[!(measure.students$gender %in% c('m','f')),'gender'] = 'nb'
-measure.students$gender = as.factor(measure.students$gender)
-measure.students$writing = as.factor(substr(tolower(measure.students$writing),1,1))
-measure.students$swinging = as.factor(substr(tolower(measure.students$swinging),1,1))
+data.location = 'C:/Users/Nathan/Desktop/Stat419/measure-students.txt'
+measure.df = prepareMeasureData(data.location)
 
-#Clean data for the eye variable
-errorEntry = na.omit(measure.students$eye == 'brown')
-measure.students[errorEntry,'eye_color'] = 'brown'
-measure.students[errorEntry,'eye'] = 'left'
-measure.students$eye = substr(tolower(measure.students$eye),1,1)
-measure.students[measure.students$eye %in% c('b','e'),'eye'] = 'b'
-measure.students$eye = as.factor(measure.students$eye)
-
-#Clean data for the eye color variable
-measure.students[measure.students$eye_color == 'blue/green','eye_color'] = 'blue-green'
-measure.students$eye_color = as.factor(tolower(measure.students$eye_color))
-
-#Clean data for the ethnicity variable
-measure.students$ethnicity = tolower(measure.students$ethnicity)
-measure.students[measure.students$ethnicity == 'asain','ethnicity'] = 'asian'
-measure.students[measure.students$ethnicity == 'caucasain','ethnicity'] = 'caucasian'
-
-measure.students[measure.students$ethnicity %in% c('anglo','caucasian','white italian', 'white non-hispanic'),'ethnicity'] = 'white'
-measure.students[measure.students$ethnicity == 'african american','ethnicity'] = 'black'
-measure.students[measure.students$ethnicity %in% c('latin american', 'latino'),'ethnicity'] = 'hispanic'
-measure.students[measure.students$ethnicity %in% c('chinese','indian','japanese','korean','laotian','filipino'),'ethnicity'] = 'asian'
-measure.students[!(measure.students$ethnicity %in% c('asian','black','hispanic','native american','pacific islander','white')),'ethnicity'] = 'mixed'
-measure.students$ethnicity = as.factor(measure.students$ethnicity)
 ```
 
 
 ```{r, explore-frequencies}
-barplot(sort(table(measure.students$ethnicity),decreasing=TRUE), main = 'Ethnicity')
-barplot(sort(table(measure.students$eye_color),decreasing=TRUE), main = 'Eye Color')
-barplot(sort(table(measure.students$writing),decreasing=TRUE), main = 'Writing Hand')
-barplot(sort(table(measure.students$swinging),decreasing=TRUE), main = 'Swinging Hand')
-barplot(sort(table(measure.students$eye),decreasing=TRUE), main = 'Dominant Eye')
-barplot(sort(table(measure.students$gender),decreasing=TRUE), main = 'Gender')
+barplot(sort(table(measure.df$ethnicity),decreasing=TRUE), main = 'Ethnicity')
+barplot(sort(table(measure.df$eye_color),decreasing=TRUE), main = 'Eye Color')
+barplot(sort(table(measure.df$writing),decreasing=TRUE), main = 'Writing Hand')
+barplot(sort(table(measure.df$swinging),decreasing=TRUE), main = 'Swinging Hand')
+barplot(sort(table(measure.df$eye),decreasing=TRUE), main = 'Dominant Eye')
+barplot(sort(table(measure.df$gender),decreasing=TRUE), main = 'Gender')
 ```
 
 ```{r, numeric-exploration}
 library(corrplot)
-num_df <- scale(measure.students[,4:26])
+num_df <- scale(measure.df[,3:16])
 cor.use.types = c('complete', 'na.or.complete', 'pairwise.complete.obs')
 cor.calc.types = c('pearson','kendall','spearman')
 for (type in cor.use.types)
@@ -91,21 +57,20 @@ for (type in cor.use.types)
 # correlations = cor(num_df, use = 'na.or.complete')
 # corrplot(correlations)
 
+boxplot(measure.df$hand.length, outline=FALSE, main='Hand Length')
 par(mfrow=c(1,2))
-boxplot(measure.students$hand.length.left, outline=FALSE, main='Left Hand Length')
-boxplot(measure.students$hand.length.right, outline=FALSE, main='Right Hand Length')
-maleHeight = measure.students[measure.students$gender == 'm', 'height.NA']
-femaleHeight = measure.students[measure.students$gender == 'f', 'height.NA']
+
+maleHeight = measure.df[measure.df$gender == 'm', 'height.NA']
+femaleHeight = measure.df[measure.df$gender == 'f', 'height.NA']
 heightLimits = range(maleHeight,na.rm=TRUE)
 boxplot(maleHeight, outline=FALSE, main='Male Height',ylim=heightLimits)
 boxplot(femaleHeight, outline=FALSE, main='Female Height',ylim=heightLimits)
 
 par(mfrow=c(1,1))
-boxplot(measure.students$age, outline=FALSE, main='Age')
+boxplot(measure.df$age, outline=FALSE, main='Age')
 ```
 
 ```{r, k-means-chunk}
-X = num_df
-X.kmeans = kmeans(X, 3);
+
 ```
 
