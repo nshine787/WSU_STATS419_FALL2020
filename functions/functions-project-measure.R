@@ -2,8 +2,10 @@
 # takes the file location passed in from 'measure' and then returns a cleaned dataframe
 prepareMeasureData = function(measure)
 {
+  library(measurements)
   #Convert data to cm
-  raw_measure.df = read.csv(measure, header=TRUE, sep='|')
+  # raw_measure.df = read.csv(measure, header=TRUE, sep='|')
+  raw_measure.df = measure
   measure.df = unique(raw_measure.df)
   measure.df[measure.df$person_id == '81a9f3915f64dc6edd329b89bea87d5e', 'units'] = 'cm'
   inchNames = c('in', 'In', 'inches', 'Inch')
@@ -57,5 +59,23 @@ prepareMeasureData = function(measure)
   
   measure.df[,c('side','units','hand.length.left','hand.length.right','hand.width.left','hand.width.right','hand.elbow.left','hand.elbow.right','elbow.armpit.left','elbow.armpit.right','arm.reach.left','arm.reach.right','foot.length.left','foot.length.right','floor.kneepit.left','floor.kneepit.right','floor.hip.left','floor.hip.right','floor.armpit.left','floor.armpit.right')] = NULL
   measure.df = measure.df[,c(1:7,18:26,8:17)]
-  measure.df;
+  colNumsToReplace = grep('.NA',names(measure.df))
+  for (i in colNumsToReplace){
+    names(measure.df)[i] = gsub('.{3}$','',names(measure.df)[i])
+  }
+  measure.df
+}
+
+# returns a dataframe with all of the covariates for looking at the make-up of the dataset
+grabCovariates = function(measure)
+{
+  covariates = c('writing','eye','eye_color','swinging','age','gender','quality','minutes','ethnicity','notes')
+  measure[,covariates];
+}
+
+# grabs all of the rows from the dataframe that match the gender given by the parameter of the same name
+# by default it only grabs the measurements of people aged 16 or more. This way there are less outliers
+grabGenderRows = function(measure, gender, minAge = 16)
+{
+  measure[measure$gender == gender & measure$age >= minAge ,3:16];
 }

@@ -19,6 +19,7 @@ correlations = cor(measure.student[,4:(ncol(measure.student)-11)])
 correlations[lower.tri(correlations,diag=TRUE)] = NA
 
 ```
+
 ```{r, new-data}
 github.path = 'https://raw.githubusercontent.com/nshine787/WSU_STATS419_FALL2020/master/';
 local.path = 'C:/Users/Nathan/Documents/GitHub/WSU_STATS419_FALL2020/';
@@ -26,6 +27,11 @@ source(paste0(local.path, 'functions/functions-project-measure.R'))
 
 data.location = 'C:/Users/Nathan/Desktop/Stat419/measure-students.txt'
 measure.df = prepareMeasureData(data.location)
+
+# grabCovariates(measure.df)
+measure.males.df = grabGenderRows(measure.df,'m')
+measure.females.df = grabGenderRows(measure.df,'f')
+shoulderWidth = (measure.males.df$arm.span - 2*(measure.males.df$elbow.armpit+measure.males.df$hand.elbow))
 
 ```
 

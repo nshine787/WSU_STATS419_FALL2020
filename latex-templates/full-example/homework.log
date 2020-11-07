@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.14)  14 SEP 2020 14:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.16)  16 SEP 2020 12:50
 entering extended mode
 **./homework.tex
 (homework.tex
@@ -45,7 +45,7 @@ File: pdftex.def 2020/08/26 v1.2 Graphics/color driver for pdftex
 \Gin@req@height=\dimen135
 \Gin@req@width=\dimen136
 )
-(C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/float\float.sty
+("C:\Users\Alexander Nevsky\AppData\Roaming\MiKTeX\tex/latex/float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count176
 \float@exts=\toks16
@@ -53,7 +53,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks17
 \@floatcapt=\box46
 )
-(C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/wrapfig\wrapfig.sty
+("C:\Users\Alexander Nevsky\AppData\Roaming\MiKTeX\tex/latex/wrapfig\wrapfig.st
+y"
 \wrapoverhang=\dimen137
 \WF@size=\dimen138
 \c@WF@wrappedlines=\count177
@@ -61,10 +62,10 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \WF@everypar=\toks18
 Package: wrapfig 2003/01/31  v 3.6
 )
-(C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/moreverb\moreverb.sty
+("C:\Users\Alexander Nevsky\AppData\Roaming\MiKTeX\tex/latex/moreverb\moreverb.
+sty"
 Package: moreverb 2008/06/03 v2.3a `more' verbatim facilities
-
-("C:\Program Files\MiKTeX\tex/latex/tools\verbatim.sty"
+ ("C:\Program Files\MiKTeX\tex/latex/tools\verbatim.sty"
 Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks19
 \verbatim@line=\toks20
@@ -74,7 +75,8 @@ Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
 \tab@size=\count179
 \listing@line=\count180
 )
-(C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+("C:\Users\Alexander Nevsky\AppData\Roaming\MiKTeX\tex/latex/fancyhdr\fancyhdr.
+sty"
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip49
@@ -87,13 +89,14 @@ s
 \f@nch@O@olf=\skip56
 \f@nch@O@orf=\skip57
 )
-(C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/lastpage\lastpage.sty
+("C:\Users\Alexander Nevsky\AppData\Roaming\MiKTeX\tex/latex/lastpage\lastpage.
+sty"
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 )
-(C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/setspace\setspace.sty
+("C:\Users\Alexander Nevsky\AppData\Roaming\MiKTeX\tex/latex/setspace\setspace.
+sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
-)
-("C:\Program Files\MiKTeX\tex/latex/amsmath\amsmath.sty"
+) ("C:\Program Files\MiKTeX\tex/latex/amsmath\amsmath.sty"
 Package: amsmath 2020/01/20 v2.17e AMS math features
 \@mathmargin=\skip58
 
@@ -159,7 +162,7 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/amscls\amsthm.sty
+("C:\Users\Alexander Nevsky\AppData\Roaming\MiKTeX\tex/latex/amscls\amsthm.sty"
 Package: amsthm 2020/05/29 v2.20.6
 \thm@style=\toks26
 \thm@bodyfont=\toks27
@@ -170,8 +173,7 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@postskip=\skip62
 \thm@headsep=\skip63
 \dth@everypar=\toks31
-)
-("C:\Program Files\MiKTeX\tex/latex/amsfonts\amssymb.sty"
+) ("C:\Program Files\MiKTeX\tex/latex/amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
 ("C:\Program Files\MiKTeX\tex/latex/tools\tabularx.sty"
@@ -195,20 +197,20 @@ Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \TX@cols=\count193
 \TX@ftn=\toks33
 )
-(C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/natbib\natbib.sty
+("C:\Users\Alexander Nevsky\AppData\Roaming\MiKTeX\tex/latex/natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip66
 \bibsep=\skip67
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count194
 )
-(C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/titling\titling.sty
+("C:\Users\Alexander Nevsky\AppData\Roaming\MiKTeX\tex/latex/titling\titling.st
+y"
 Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmarkwidth=\skip68
 \thanksmargin=\skip69
 \droptitle=\skip70
-)
-("C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def"
+) ("C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def"
 File: l3backend-pdftex.def 2020-09-01 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count195
 \l__pdf_internal_box=\box52
@@ -275,13 +277,13 @@ Package pdftex.def Info: graphics/pdffigure.pdf  used on input line 93.
 (pdftex.def)             Requested size: 216.81pt x 216.80946pt.
  [1
 
-{C:/Users/Nathan/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2 <./graphics
-/myfigure.png> <./graphics/pdffigure.pdf>] (homework.bbl) 
+{C:/Users/Alexander Nevsky/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2 <
+./graphics/myfigure.png> <./graphics/pdffigure.pdf>] (homework.bbl) 
 AED: lastpage setting LastPage
 [3] (homework.aux) ) 
 Here is how much of TeX's memory you used:
  3298 strings out of 481199
- 42971 string characters out of 2915346
+ 43139 string characters out of 2915314
  284587 words of memory out of 3000000
  18853 multiletter control sequences out of 15000+200000
  542049 words of font info for 56 fonts, out of 3000000 for 9000
