@@ -26,24 +26,39 @@ local.path = 'C:/Users/Nathan/Documents/GitHub/WSU_STATS419_FALL2020/';
 source(paste0(local.path, 'functions/functions-project-measure.R'))
 
 data.location = 'C:/Users/Nathan/Desktop/Stat419/measure-students.txt'
-measure.df = prepareMeasureData(data.location)
+measure = utils::read.csv('C:/Users/Nathan/Desktop/Stat419/measure-students.txt', header=TRUE, quote="", sep="|");
+measure.df = prepareMeasureData(measure)
 
 # grabCovariates(measure.df)
 measure.males.df = grabGenderRows(measure.df,'m')
 measure.females.df = grabGenderRows(measure.df,'f')
-shoulderWidth = (measure.males.df$arm.span - 2*(measure.males.df$elbow.armpit+measure.males.df$hand.elbow))
 
+proportions.male = measure.males.df/measure.males.df$height
+proportions.female = measure.females.df/measure.females.df$height
+summary(measure.df)
 ```
 
 
 ```{r, explore-frequencies}
-barplot(sort(table(measure.df$ethnicity),decreasing=TRUE), main = 'Ethnicity')
-barplot(sort(table(measure.df$eye_color),decreasing=TRUE), main = 'Eye Color')
-barplot(sort(table(measure.df$writing),decreasing=TRUE), main = 'Writing Hand')
-barplot(sort(table(measure.df$swinging),decreasing=TRUE), main = 'Swinging Hand')
-barplot(sort(table(measure.df$eye),decreasing=TRUE), main = 'Dominant Eye')
-barplot(sort(table(measure.df$gender),decreasing=TRUE), main = 'Gender')
+barplot(sort(table(measure.df$ethnicity),decreasing=TRUE), main = 'Ethnicity', ylab = 'Number of Subjects')
+barplot(sort(table(measure.df$eye_color),decreasing=TRUE), main = 'Eye Color', ylab = 'Number of Subjects')
+barplot(sort(table(measure.df$writing),decreasing=TRUE), main = 'Writing Hand', ylab = 'Number of Subjects')
+barplot(sort(table(measure.df$swinging),decreasing=TRUE), main = 'Swinging Hand', ylab = 'Number of Subjects')
+barplot(sort(table(measure.df$eye),decreasing=TRUE), main = 'Dominant Eye', ylab = 'Number of Subjects')
+barplot(sort(table(measure.df$gender),decreasing=TRUE), main = 'Gender', ylab = 'Number of Subjects')
 ```
+
+```{r, save-plots}
+pdf(file='ethnicity-plot.pdf')
+barplot(sort(table(measure.df$ethnicity),decreasing=TRUE), main = 'Ethnicity', ylab = 'Number of Subjects')
+dev.off()
+pdf(file='gender-plot.pdf')
+barplot(sort(table(measure.df$gender),decreasing=TRUE), main = 'Gender', ylab = 'Number of Subjects')
+pdf(file='age-plot.df')
+hist(measure.df$age, main = 'Age Distribution', xlab='Age of Subjects', ylab = 'Number of Subjects')
+dev.off()
+```
+
 
 ```{r, numeric-exploration}
 library(corrplot)
@@ -76,7 +91,38 @@ par(mfrow=c(1,1))
 boxplot(measure.df$age, outline=FALSE, main='Age')
 ```
 
-```{r, k-means-chunk}
+```{r, variable-plots-female}
+myData = proportions.female;  # numeric values only, only what will appear in table
+set.seed(456)
+myData = myData[,c(2,4,6,11,12,15)]
 
+alreadyCols = c()
+for (i in colnames(myData))
+{
+  for (j in colnames(myData)){
+    if (i != j & !(j %in% alreadyCols)){
+      plot(myData[,c(i,j)])
+      # alreadyCols = c(alreadyCols, j)
+    }
+  }
+  alreadyCols = c(alreadyCols, i)
+}
 ```
 
+```{r, variable-plots-male}
+myData = proportions.male;  # numeric values only, only what will appear in table
+set.seed(456)
+myData = myData[,c(2,4,6,11,12,15)]
+
+alreadyCols = c()
+for (i in colnames(myData))
+{
+  for (j in colnames(myData)){
+    if (i != j & !(j %in% alreadyCols)){
+      plot(myData[,c(i,j)])
+      # alreadyCols = c(alreadyCols, j)
+    }
+  }
+  alreadyCols = c(alreadyCols, i)
+}
+```

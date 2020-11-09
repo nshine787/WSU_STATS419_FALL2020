@@ -100,9 +100,8 @@
 
 
 
-\title{\textbf{\textcolor{WSU.crimson}{A boring (academic) title or a
-clever title?}} \newline \textbf{\textcolor{WSU.gray}{A secondary
-title}}  }
+\title{\textbf{\textcolor{WSU.crimson}{The Modern Vitruvian
+Man}} \newline \textbf{\textcolor{WSU.gray}{Body Proportions}}  }
  
 
 %  
@@ -113,7 +112,7 @@ Shine\vspace{0.05in} \newline\normalsize\emph{Washington State
 University}  }
 
 
-\date{November 07, 2020}
+\date{November 08, 2020}
 \setcounter{secnumdepth}{3}
 
 \usepackage{titlesec}
@@ -290,8 +289,7 @@ University}  }
              pdfkeywords = {multiple comparisons to control;
 multivariate chi-square distribution; nonlinear growth curves; Richard's
 curve; simulated critical points},  
-            pdftitle={A boring (academic) title or a clever title?: A
-secondary title},
+            pdftitle={The Modern Vitruvian Man: Body Proportions},
             colorlinks=true,
             citecolor=blue,
             urlcolor=blue,
@@ -316,8 +314,7 @@ secondary title},
 
 
 \pagestyle{fancy}   
-\lhead{\textcolor{WSU.crimson}{\textbf{ A boring (academic) title or a
-clever title? }}}
+\lhead{\textcolor{WSU.crimson}{\textbf{ The Modern Vitruvian Man }}}
 \chead{}
 \rhead{\textcolor{WSU.gray}{\textbf{  Page\ \thepage\ of\ \protect\pageref{LastPage} }}}
 \lfoot{}
@@ -391,7 +388,7 @@ growth curves; Richard's curve; simulated critical points \par
     
     \hbox{\vrule height .2pt width 39.14pc}
     \vskip 5pt 
-    \hfill \textbf{\textcolor{WSU.gray}{ November 07, 2020 } }
+    \hfill \textbf{\textcolor{WSU.gray}{ November 08, 2020 } }
     \vskip 5pt 
     
 \end{abstract}
@@ -416,29 +413,127 @@ Write something here.
 
 Write something here.
 
-\section{Research Question:  What is my primary question}
+\section{Research Question:  Are the Vitruvian Man proportions realistic? How likely are men to be close to these proportions?}
 \label{sec:rq}
 
-\subsection{What is my secondary question}
+The Vitruvian Man was designed with certain proportions in mind.
+Vitruvius was a Roman architect and in his writings he describes the
+human body as a set of proportions of one's height. \newline
+
+\begin{quote}
+"the open hand from the wrist to the tip of the middle finger is [a tenth part of the whole height]; the head from the chin to the crown is an eighth, ... The length of the foot is one sixth of the height of the body... and the breadth of the breast is also one fourth... outstretched arms... will be found to be the same as the height"
+\end{quote}
+
+\citep{Vitruvius} \newline
+
+\begin{center}
+\begin{tabular}{ l c}
+  \label{tab:vitruvian-props}
+  \textbf{Body length} & \textbf{Vitruvian Man proportions}\\
+  \hline
+  Head height & 0.125\\
+  Arm span & 1.000\\
+  Hand length & 0.100\\
+  Foot length & 0.167\\
+  Knee height & 0.250\\
+  Shoulder width & 0.250\\
+\end{tabular}
+\end{center}
+\subsection{Does height affect the body proportions for men and women?}
 \label{sec:rq2}
 
-\subsection{What is my other secondary question}
+\subsection{What body proportions for men and women are realistic today?}
 \label{sec:rq3}
 
 \section{Data Description}
 \label{sec:data}
 
-Very brief introduction to the data, how it was collected, and so on.
-Remember that everything is covered (who, what, when, where, why, how,
-so what, and so on). Reference the section in the Appendix with greater
-detail about the data provenance. This section should be about two
-paragraphs, and the Appendix should have more information.
+The data was collected by approximately 30 students who are enrolled in
+STAT 419 at WSU. Students were supposed to gather measurements from at
+least ten people. The measurements gathered were: height, head height,
+head circumference, arm span, floor to navel, hand length, hand width,
+hand to elbow, elbow to armpit, arm reach, foot length, floor to
+knee-pit, floor to hip, and floor to armpit. The measurements were
+collected by having either the student or another measure the subject
+with a measuring tape such as the ones used by tailors. Students were
+also asked to record which side of the body the measurements came from.
+Some students chose to gather measurements from both sides for the sake
+of completeness.
+
+The data from all students was then compiled into one dataset. The total
+dataset contains 263 rows of measurements. Covariates for each row were
+also collected. Each subject was instructed to identify their writing
+hand, swinging hand, dominant eye, eye color, age, gender, and
+ethnicity. The data collector then assigned a value (1-10) assessing the
+quality of the measurements taken, and recorded the amount of minutes
+that it took to complete the measurements.
 
 \subsection{Summary of Sample}
 \label{sec:data-sample}
 
+The sample contained about equal parts male and female subjects.
+Subjects identifying as white made up about 70\% of the dataset, the
+next largest ethnicity was Asian, which contained about 15\% of
+subjects. The majority of those sampled were in their 20s. There were
+not many under 10 or over 70 sampled. Subjects who preferred their
+right-side made up about 80\% of the sample. Most subjects had brown or
+blue eyes --46 and 31 percent respectively-- with a a lesser number of
+hazel or green eyed persons. The quality of the data collected ranged
+mostly between 8-10 on a 10-point scale. Most data collectors took
+between 10-20 minutes to gather all measurements required.
+
+\begin{figure}[!ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+    \centering
+    %  trim={<left> <lower> <right> <upper>}
+    % https://shantoroy.com/latex/add-subfig-in-latex/
+            \includegraphics[clip,scale=0.4]{figures/gender-plot.pdf}
+        \caption{ Gender Distribution}
+        \label{fig:gender-plot}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.5\textwidth}
+    \centering
+        \includegraphics[clip,scale=0.4]{figures/ethnicity-plot.pdf}
+            \caption{Ethnicity Distribution}
+        \label{fig:ethnicity-plot}
+    \end{subfigure}
+    \vspace{2.5mm}
+    \hrule
+    \vspace{2.5mm}
+        \caption{\textbf{ Gender and Ethnicity Distributions } }
+        \label{fig:ge-plot}
+\end{figure}
+
+\newpage
 \subsection{Summary Statistics of Data}
 \label{sec:data-summary}
+
+By comparing tables below we can see that the average proportion for
+both male and female subjects are about the same. However, the standard
+deviations show that males vary more in arm span and shoulder width. To
+a lesser extent males vary more with hand length as well. Females have a
+more variable head.height proportion. Females also have a slightly more
+variable foot length and floor to knee-pit length.
+
+\input{tables/female-correlation-table}
+\input{tables/male-correlation-table}
+
+Male and female subjects have the significant positive correlations for
+hand length and head height, shoulder width and arm span, and foot
+length and hand length. This means that for any person if they have
+wider shoulders, then they are likely to have a bigger arm span. If a
+person has longer hands they are more likely to have a taller head and
+longer feet. For male subjects there is also a negative correlation
+between arm span and head height, meaning that those with bigger arm
+spans are likely to have shorter heads. However, there is a positive
+correlation for males between the height of the knee and the height of
+the head, meaning that a male with a higher knee (or longer legs?) is
+more likely to have a longer head. For female subjects there are
+significant positive correlations between the height of the knee, and
+both hand length and foot length. This suggests that females with longer
+legs may have longer feet and hands.
+
+\newpage
 
 \section{Key Findings}
 \label{sec:findings}
@@ -544,17 +639,41 @@ Statistics has contributed much to data analysis.  In the future it can, and in 
 \end{quote}
 
 \newpage
-
-\input{tables/example-correlation-table}
-
-\newpage
-
-\newpage
 \section{APPENDICES}
 \label{sec:appendix}
 
 \subsection{Data Provenance}
 \label{sec:appendix-data-provenance}
+
+As was listed in \ref{sec:data} the data collection was assigned to the
+STAT 419 class at WSU, which is around 30 people. This can lead to some
+discrepancies in the way that the data was collected. The data may not
+always have been measured by students, but by the people which their
+handouts were sent to. For the 10 people that I gathered measurements
+for I measured seven people personally, and then had three others send
+me their results by email. The number of data collectors involved can
+also lead to different interpretations of what each measurement means.
+\newline The data collector was given the option to pick which units
+they wished to measure in, and the subject was also asked to identify
+their preferred hand in writing and swinging, what eye is dominant, what
+their eye color is, how old they are, what gender they are, and what
+ethnicity they identify as. These covariates give us a better picture of
+our sample. For example, since we have about equal amounts of male and
+female measurements (\ref{fig:gender-plot}) we can make some
+generalizations. But on the other hand, we do not have much diversity of
+ethnicity in subjects (\ref{fig:ethnicity-plot}) so we can not
+generalize our results as easily.
+
+Some of the measurements seemed like they had more outliers than others.
+This is likely because they were either entered incorrectly or they were
+measured differently. The measurements with significant outliers are:
+hand length, arm reach, floor to knee-pit, and head height. Hand length
+was supposed to be measured from the tip of the middle finger to the
+wrist. Arm reach is supposed to be the measurement from the floor to the
+tip of the middle finger when the arms are pointed upwards above the
+head. The floor to knee-pit measurement is from the heel to the back of
+knee. Lastly the head height measurement is from the chin to the top of
+the head.
 
 \newpage
 \subsubsection{Data Collection Handout}
@@ -564,21 +683,9 @@ Statistics has contributed much to data analysis.  In the future it can, and in 
     \hrule
     \caption{ \textbf{Handout Page 1} }
     \begin{center}
-        \scalebox{1.00}{    \includegraphics[trim = 0 0 0 0,clip,width=0.85\textwidth]{pdfs/handout1.pdf} }
+        \scalebox{1.00}{    \includegraphics[trim = 0 0 0 0,clip,width=0.85\textwidth]{pdfs/shine_handout.pdf} }
     \end{center}
     \label{fig:handout-1}
-    \hrule
-\end{figure}
-
-\newpage
-
-\begin{figure}[!ht]
-    \hrule
-    \caption{ \textbf{Handout Page 2} }
-    \begin{center}
-        \scalebox{1.00}{    \includegraphics[trim = 0 0 0 0,clip,width=0.85\textwidth]{pdfs/handout2.pdf} }
-    \end{center}
-    \label{fig:handout-2}
     \hrule
 \end{figure}
 
@@ -642,26 +749,97 @@ Below is the code to load the data and prepare it for analysis.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{path.project =}\StringTok{ "C:/Users/Nathan/GitHub/WSU\_STATS419\_FALL2020/PROJECT{-}01/"}\NormalTok{;}
-
 \NormalTok{path.to.secret =}\StringTok{ "C:/Users/Nathan/Dropbox/\_\_student\_access\_\_/\_SECRET\_/"}\NormalTok{;}
 
 \NormalTok{measure =}\StringTok{ }\NormalTok{utils}\OperatorTok{::}\KeywordTok{read.csv}\NormalTok{( }\KeywordTok{paste0}\NormalTok{(path.to.secret, }\StringTok{"measure{-}students.txt"}\NormalTok{), }\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{quote=}\StringTok{""}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"|"}\NormalTok{);}
+\CommentTok{\#path.my.github = "https://raw.githubusercontent.com/nshine787/WSU\_STATS419\_FALL2020/";}
+\CommentTok{\# source\_url(paste0(path.my.github, \textquotesingle{}master/functions/functions{-}project{-}measure.R\textquotesingle{}))}
 
-\CommentTok{\#path.github = "https://raw.githubusercontent.com/this{-}IS{-}YOUR{-}PATH{-}TO{-}GITHUB/";}
-\CommentTok{\#source\_url( paste0(path.github,"master/functions/functions{-}project{-}measure.R") );}
+\NormalTok{path.project =}\StringTok{ "C:/Users/Nathan/Documents/GitHub/WSU\_STATS419\_FALL2020/"}
+\KeywordTok{source}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(path.project, }\StringTok{\textquotesingle{}functions/functions{-}project{-}measure.R\textquotesingle{}}\NormalTok{))}
 
 \CommentTok{\# this is your function}
 \CommentTok{\# put in the same "units"}
 \CommentTok{\# merge left/right}
 \CommentTok{\# build proportion data}
 \CommentTok{\# and so on ... }
-\CommentTok{\# measure.df = prepareMeasureData(measure);}
+\CommentTok{\# relevantColumns = c(\textquotesingle{}height\textquotesingle{}, )}
+\NormalTok{relevantColumns =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}height\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)}
+\NormalTok{measure.df =}\StringTok{ }\KeywordTok{prepareMeasureData}\NormalTok{(measure);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'measurements' was built under R version 4.0.3
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in `[<-.factor`(`*tmp*`, iseq, value = "nb"): invalid factor level, NA
+## generated
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure.males.df =}\StringTok{ }\KeywordTok{grabGenderRows}\NormalTok{(measure.df,}\StringTok{\textquotesingle{}m\textquotesingle{}}\NormalTok{)[,relevantColumns]}
+\NormalTok{measure.females.df =}\StringTok{ }\KeywordTok{grabGenderRows}\NormalTok{(measure.df,}\StringTok{\textquotesingle{}f\textquotesingle{}}\NormalTok{)[,relevantColumns]}
+
+\NormalTok{proportions.male =}\StringTok{ }\NormalTok{measure.males.df}\OperatorTok{/}\NormalTok{measure.males.df}\OperatorTok{$}\NormalTok{height}
+\NormalTok{proportions.female =}\StringTok{ }\NormalTok{measure.females.df}\OperatorTok{/}\NormalTok{measure.females.df}\OperatorTok{$}\NormalTok{height}
 \end{Highlighting}
 \end{Shaded}
 
 Below is the code to generate the summary statistics and save them as a
-table that you see in Section \ref{}.
+table that you see in Section \ref{sec:data-summary}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(measure.males.df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      height       head.height       arm.span      hand.length   
+##  Min.   :137.0   Min.   :17.78   Min.   :139.0   Min.   :15.00  
+##  1st Qu.:172.0   1st Qu.:21.59   1st Qu.:169.5   1st Qu.:18.30  
+##  Median :177.8   Median :23.00   Median :177.8   Median :19.05  
+##  Mean   :176.4   Mean   :22.98   Mean   :178.3   Mean   :19.15  
+##  3rd Qu.:182.7   3rd Qu.:24.00   3rd Qu.:185.2   3rd Qu.:20.00  
+##  Max.   :191.1   Max.   :29.50   Max.   :224.0   Max.   :24.00  
+##  NA's   :8       NA's   :7       NA's   :8       NA's   :4      
+##   foot.length    floor.kneepit   shoulder.width 
+##  Min.   :20.00   Min.   :38.00   Min.   : 1.50  
+##  1st Qu.:25.09   1st Qu.:44.77   1st Qu.:23.81  
+##  Median :26.02   Median :47.00   Median :36.00  
+##  Mean   :26.15   Mean   :47.23   Mean   :35.80  
+##  3rd Qu.:27.59   3rd Qu.:50.00   3rd Qu.:44.00  
+##  Max.   :30.50   Max.   :58.00   Max.   :92.00  
+##  NA's   :9       NA's   :10      NA's   :18
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(measure.females.df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      height       head.height       arm.span      hand.length   
+##  Min.   :140.0   Min.   :17.50   Min.   :141.7   Min.   :13.97  
+##  1st Qu.:158.0   1st Qu.:20.31   1st Qu.:157.2   1st Qu.:16.80  
+##  Median :162.6   Median :21.50   Median :163.0   Median :17.35  
+##  Mean   :162.5   Mean   :21.75   Mean   :164.1   Mean   :17.57  
+##  3rd Qu.:167.7   3rd Qu.:22.86   3rd Qu.:171.4   3rd Qu.:18.38  
+##  Max.   :181.0   Max.   :33.02   Max.   :198.5   Max.   :21.20  
+##  NA's   :8       NA's   :7       NA's   :9       NA's   :3      
+##   foot.length    floor.kneepit   shoulder.width 
+##  Min.   :13.50   Min.   :34.92   Min.   : 1.70  
+##  1st Qu.:22.54   1st Qu.:41.00   1st Qu.:22.00  
+##  Median :23.50   Median :43.00   Median :31.11  
+##  Mean   :23.62   Mean   :43.49   Mean   :30.28  
+##  3rd Qu.:24.40   3rd Qu.:45.72   3rd Qu.:36.83  
+##  Max.   :27.50   Max.   :52.38   Max.   :61.50  
+##  NA's   :13      NA's   :13      NA's   :13
+\end{verbatim}
 
 
 
