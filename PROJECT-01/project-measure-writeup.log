@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.7)  8 NOV 2020 17:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.7)  9 NOV 2020 02:28
 entering extended mode
 **./project-measure-writeup.tex
 (project-measure-writeup.tex
@@ -604,12 +604,12 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip98
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 297.
+Package hyperref Info: Option `breaklinks' set `true' on input line 296.
 
 Package hyperref Warning: Option `bookmarks' has already been used,
-(hyperref)                setting the option has no effect on input line 297.
+(hyperref)                setting the option has no effect on input line 296.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 297.
+Package hyperref Info: Option `colorlinks' set `true' on input line 296.
 (C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/placeins\placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
@@ -622,24 +622,24 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 ) (project-measure-writeup.aux)
 \openout1 = `project-measure-writeup.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 325.
-LaTeX Font Info:    ... okay on input line 325.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 325.
-LaTeX Font Info:    ... okay on input line 325.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 325.
-LaTeX Font Info:    ... okay on input line 325.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 325.
-LaTeX Font Info:    ... okay on input line 325.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 325.
-LaTeX Font Info:    ... okay on input line 325.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 325.
-LaTeX Font Info:    ... okay on input line 325.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 325.
-LaTeX Font Info:    ... okay on input line 325.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 325.
-LaTeX Font Info:    ... okay on input line 325.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 325.
-LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -701,14 +701,14 @@ G,.JBIG2,.JB2,.eps]
 )
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 325.
+(lastpage)             ! on input line 324.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 Package hyperref Warning: Draft mode on.
 
-Package hyperref Info: Link coloring ON on input line 325.
+Package hyperref Info: Link coloring ON on input line 324.
 ("C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/refcount\refcount.sty
@@ -720,182 +720,218 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count327
 )
-LaTeX Info: Redefining \ref on input line 325.
-LaTeX Info: Redefining \pageref on input line 325.
-LaTeX Info: Redefining \nameref on input line 325.
+LaTeX Info: Redefining \ref on input line 324.
+LaTeX Info: Redefining \pageref on input line 324.
+LaTeX Info: Redefining \nameref on input line 324.
 LaTeX Font Info:    Trying to load font information for T1+phv on input line 34
-3.
+2.
 (C:\Users\Nathan\AppData\Roaming\MiKTeX\tex/latex/psnfss\t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <11> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 343.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 342.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
-66.
+76.
 ("C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
-66.
+76.
 ("C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-366.
+376.
 ("C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-366.
+376.
 ("C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 366.
+(Font)              <10> on input line 376.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 366.
+(Font)              <7> on input line 376.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 366.
-
-Underfull \hbox (badness 10000) in paragraph at lines 419--422
-
- []
+(Font)              <5> on input line 376.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--428
-
- []
-
+pdfTeX warning: pdflatex.exe (file ./figures/one_graphic.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<figures/one_graphic.pdf, id=1, 963.6pt x 542.025pt>
+File: figures/one_graphic.pdf Graphic file (type pdf)
+<use figures/one_graphic.pdf>
+Package pdftex.def Info: figures/one_graphic.pdf  used on input line 414.
+(pdftex.def)             Requested size: 385.43317pt x 216.80615pt.
 [1
 
-{C:/Users/Nathan/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-<figures/gender-plot.pdf, id=13, 505.89pt x 505.89pt>
+{C:/Users/Nathan/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./figures/one_
+graphic.pdf>]
+\openout4 = `project-measure-writeup.ent'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 464--483
+
+ []
+
+[2]
+<figures/gender-plot.pdf, id=27, 505.89pt x 505.89pt>
 File: figures/gender-plot.pdf Graphic file (type pdf)
 <use figures/gender-plot.pdf>
-Package pdftex.def Info: figures/gender-plot.pdf  used on input line 490.
+Package pdftex.def Info: figures/gender-plot.pdf  used on input line 504.
 (pdftex.def)             Requested size: 202.3524pt x 202.3524pt.
-<figures/ethnicity-plot.pdf, id=15, 505.89pt x 505.89pt>
+<figures/ethnicity-plot.pdf, id=29, 505.89pt x 505.89pt>
 File: figures/ethnicity-plot.pdf Graphic file (type pdf)
 <use figures/ethnicity-plot.pdf>
-Package pdftex.def Info: figures/ethnicity-plot.pdf  used on input line 496.
+Package pdftex.def Info: figures/ethnicity-plot.pdf  used on input line 510.
 (pdftex.def)             Requested size: 202.3524pt x 202.3524pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 486--501
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 500--515
 []$[]$ $[]$
  []
 
-[2 <./figures/gender-plot.pdf> <./figures/ethnicity-plot.pdf>] (tables/female-c
+[3 <./figures/gender-plot.pdf> <./figures/ethnicity-plot.pdf>] (tables/female-c
 orrelation-table.tex
-Overfull \hbox (6.63913pt too wide) in alignment at lines 32--32
+Overfull \hbox (10.88913pt too wide) in alignment at lines 32--32
 [][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
 ) (tables/male-correlation-table.tex
-Overfull \hbox (6.25023pt too wide) in alignment at lines 32--32
+Overfull \hbox (10.50023pt too wide) in alignment at lines 32--32
 [][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
-) [3] [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 550--552
+) [4]
+Underfull \hbox (badness 10000) in paragraph at lines 553--576
 
  []
 
-<figures/conceptual-model-v4.pdf, id=51, 722.7pt x 542.025pt>
-File: figures/conceptual-model-v4.pdf Graphic file (type pdf)
-<use figures/conceptual-model-v4.pdf>
-Package pdftex.def Info: figures/conceptual-model-v4.pdf  used on input line 61
-2.
-(pdftex.def)             Requested size: 469.75502pt x 352.32034pt.
 
-Overfull \hbox (6.66666pt too wide) in paragraph at lines 612--613
- [] 
+Underfull \hbox (badness 10000) in paragraph at lines 553--576
+
  []
 
-[6]
-\openout4 = `project-measure-writeup.ent'.
+<figures/hand-length-head-height-plot.pdf, id=58, 505.89pt x 505.89pt>
+File: figures/hand-length-head-height-plot.pdf Graphic file (type pdf)
+<use figures/hand-length-head-height-plot.pdf>
+Package pdftex.def Info: figures/hand-length-head-height-plot.pdf  used on inpu
+t line 582.
+(pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
 
-[7 <./figures/conceptual-model-v4.pdf>] [8] [9]
+Overfull \hbox (18.06686pt too wide) in paragraph at lines 582--583
+ [][] 
+ []
 
-pdfTeX warning: pdflatex.exe (file ./pdfs/shine_handout.pdf): PDF inclusion: fo
-und PDF version <1.7>, but at most version <1.5> allowed
-<pdfs/shine_handout.pdf, id=100, 614.295pt x 794.97pt>
-File: pdfs/shine_handout.pdf Graphic file (type pdf)
-<use pdfs/shine_handout.pdf>
-Package pdftex.def Info: pdfs/shine_handout.pdf  used on input line 686.
-(pdftex.def)             Requested size: 399.29463pt x 516.73651pt.
-[10 <./pdfs/shine_handout.pdf>]
+<figures/hand-length-foot-length.pdf, id=60, 505.89pt x 505.89pt>
+File: figures/hand-length-foot-length.pdf Graphic file (type pdf)
+<use figures/hand-length-foot-length.pdf>
+Package pdftex.def Info: figures/hand-length-foot-length.pdf  used on input lin
+e 588.
+(pdftex.def)             Requested size: 252.94437pt x 252.94437pt.
 
-pdfTeX warning: pdflatex.exe (file ./figures/Vitruvian.pdf): PDF inclusion: fou
-nd PDF version <1.6>, but at most version <1.5> allowed
-<figures/Vitruvian.pdf, id=116, 474.2545pt x 166.15877pt>
-File: figures/Vitruvian.pdf Graphic file (type pdf)
-<use figures/Vitruvian.pdf>
-Package pdftex.def Info: figures/Vitruvian.pdf  used on input line 699.
-(pdftex.def)             Requested size: 154.16061pt x 166.15836pt.
-File: figures/Vitruvian.pdf Graphic file (type pdf)
-<use figures/Vitruvian.pdf>
-Package pdftex.def Info: figures/Vitruvian.pdf  used on input line 705.
-(pdftex.def)             Requested size: 154.16063pt x 166.15836pt.
+Overfull \hbox (18.06686pt too wide) in paragraph at lines 588--589
+ [][] 
+ []
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 695--710
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 578--593
 []$[]$ $[]$
  []
 
-[11 <./figures/Vitruvian.pdf>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
-36.
+[5 <./figures/hand-length-head-height-plot.pdf> <./figures/hand-length-foot-len
+gth.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 603--626
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 603--626
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 603--626
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 634--663
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 634--663
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 634--663
+
+ []
+
+[7]
+
+pdfTeX warning: pdflatex.exe (file ./pdfs/shine_handout.pdf): PDF inclusion: fo
+und PDF version <1.7>, but at most version <1.5> allowed
+<pdfs/shine_handout.pdf, id=84, 614.295pt x 794.97pt>
+File: pdfs/shine_handout.pdf Graphic file (type pdf)
+<use pdfs/shine_handout.pdf>
+Package pdftex.def Info: pdfs/shine_handout.pdf  used on input line 672.
+(pdftex.def)             Requested size: 399.29463pt x 516.73651pt.
+[8 <./pdfs/shine_handout.pdf>]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
+90.
 ("C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 737.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 691.
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-756.
+707.
 ("C:\Program Files\MiKTeX\tex/latex/lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [12] [13] (project-measure-writeup.ent) [14] (project-measure-writeup.bbl) [1
-5] (project-measure-writeup.toc)
+) [9] [10] [11] (project-measure-writeup.ent) [12] (project-measure-writeup.bbl
+) [13] (project-measure-writeup.toc)
 \tf@toc=\write5
 \openout5 = `project-measure-writeup.toc'.
 
 
 AED: lastpage setting LastPage
-[16] (project-measure-writeup.aux) ) 
+[14] (project-measure-writeup.aux) ) 
 Here is how much of TeX's memory you used:
- 15483 strings out of 479799
- 233296 string characters out of 2879553
- 592164 words of memory out of 3000000
- 32159 multiletter control sequences out of 15000+200000
+ 15462 strings out of 479799
+ 233123 string characters out of 2879553
+ 590842 words of memory out of 3000000
+ 32137 multiletter control sequences out of 15000+200000
  625895 words of font info for 83 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,13n,84p,1283b,555s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 79i,13n,84p,779b,555s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm
-/lm-rm.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Fi
-les/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/MiKTeX/fonts/enc/dvi
-ps/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{
+/lm-ts1.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program F
+iles/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX/fonts/enc/dvi
+ps/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{
 C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX/fo
 nts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/l
 mbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Program 
 Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX/fonts/typ
-e1/public/lm/lmbxi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.
-pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi5.pfb><C:/Program Files/
-MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
-lic/lm/lmmib10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:
-/Program Files/MiKTeX/fonts/type1/public/lm/lmr5.pfb><C:/Program Files/MiKTeX/f
-onts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lm
-r8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program File
-s/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/
-public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><
-C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Program Files/MiKTe
-X/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/l
-m/lmtk10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Prog
-ram Files/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Program Files/MiKTeX/fon
-ts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on project-measure-writeup.pdf (16 pages, 685287 bytes).
+e1/public/lm/lmbxi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi5.p
+fb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/M
+iKTeX/fonts/type1/public/lm/lmr5.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
+c/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Progr
+am Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/t
+ype1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri9.
+pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Program Files/
+MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
+lic/lm/lmtk10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:
+/Program Files/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Program Files/MiKTe
+X/fonts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on project-measure-writeup.pdf (14 pages, 502378 bytes).
 PDF statistics:
- 308 PDF objects out of 1000 (max. 8388607)
+ 192 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 62 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 67 words of extra memory for PDF output out of 10000 (max. 10000000)
 
 
 ! pdflatex: security risk: running with elevated privileges

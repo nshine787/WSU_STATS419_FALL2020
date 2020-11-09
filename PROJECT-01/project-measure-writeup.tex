@@ -112,7 +112,7 @@ Shine\vspace{0.05in} \newline\normalsize\emph{Washington State
 University}  }
 
 
-\date{November 08, 2020}
+\date{November 09, 2020}
 \setcounter{secnumdepth}{3}
 
 \usepackage{titlesec}
@@ -286,9 +286,8 @@ University}  }
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={Nathan Shine (Washington State University)},
-             pdfkeywords = {multiple comparisons to control;
-multivariate chi-square distribution; nonlinear growth curves; Richard's
-curve; simulated critical points},  
+             pdfkeywords = {t-tests; proportions; data collection;
+correlation investigation},  
             pdftitle={The Modern Vitruvian Man: Body Proportions},
             colorlinks=true,
             citecolor=blue,
@@ -360,25 +359,22 @@ State University}
 
     \vskip 8.5pt % \small 
 
-\noindent In this article we compare the
-\emph{empirical characteristic function} \citep{Tukey:1977, Becker:1988}
-to a \emph{moment-generating-functional form} to compute the proportion
-of hypotheses \(m\) that are rejected under the null hypothesis.
-\vspace{0.25in}
+\noindent In this article we look at the measurements of the body as a
+proportion of height. We compare the measurements gathered by students
+to the ideal proportions set out by the Roman architect Vitruvius. We
+also look at if females can fit within these proportions, and which
+measurements can be used in place of height to explain
+proportions\vspace{0.25in}
 
-\noindent Here is a second paragraph of the abstract (if necessary), and
-with the pipe notation it doesn't break. Notice it still needs to be
-indented. \vspace{0.25in}
-
-\noindent Generally, we write this abstract last. Often it is called the
-executive summary. It should succinctly summarize the entire document.
-You can include references such as this one to the Appendices section
-\ref{sec:appendix} if necessary.
+\noindent We find that the knee height, foot length, hand length, and
+arm span proportions all line up with the Vitruvian proportions. Male
+and female proportions do not differ greatly except for foot length. The
+hand length proportion can also explain much of the other
+proprtions.\vspace{0.25in}
 
 
-\vskip 8.5pt \noindent \textbf{\underline{Keywords}:} multiple
-comparisons to control; multivariate chi-square distribution; nonlinear
-growth curves; Richard's curve; simulated critical points \par
+\vskip 8.5pt \noindent \textbf{\underline{Keywords}:} t-tests;
+proportions; data collection; correlation investigation \par
 
     
 
@@ -388,7 +384,7 @@ growth curves; Richard's curve; simulated critical points \par
     
     \hbox{\vrule height .2pt width 39.14pc}
     \vskip 5pt 
-    \hfill \textbf{\textcolor{WSU.gray}{ November 08, 2020 } }
+    \hfill \textbf{\textcolor{WSU.gray}{ November 09, 2020 } }
     \vskip 5pt 
     
 \end{abstract}
@@ -405,26 +401,34 @@ growth curves; Richard's curve; simulated critical points \par
 \section{Introduction}
 \label{sec:intro}
 
-Write something here.
-
-{[}ONE GRAPHIC{]}
-
-{[}TWO GRAPHICS AS ONE{]}
-
-Write something here.
-
-\section{Research Question:  Are the Vitruvian Man proportions realistic? How likely are men to be close to these proportions?}
-\label{sec:rq}
-
 The Vitruvian Man was designed with certain proportions in mind.
 Vitruvius was a Roman architect and in his writings he describes the
-human body as a set of proportions of one's height. \newline
+human body as a set of proportions of one's height. In this graphic we
+can see which of our measurements aligned with the Vitruvian
+proportions.
+
+\begin{figure}[!ht]
+    \centering
+    %  trim={<left> <lower> <right> <upper>}
+    % https://shantoroy.com/latex/add-subfig-in-latex/
+            \includegraphics[clip,scale=0.4]{figures/one_graphic.pdf}
+        \caption{ True Vitruvian Proportions}
+        \label{fig:one-graphic}
+\end{figure}
 
 \begin{quote}
 "the open hand from the wrist to the tip of the middle finger is [a tenth part of the whole height]; the head from the chin to the crown is an eighth, ... The length of the foot is one sixth of the height of the body... and the breadth of the breast is also one fourth... outstretched arms... will be found to be the same as the height"
 \end{quote}
 
-\citep{Vitruvius} \newline
+\citep{Vitruvius}
+
+\section{Research Question:  Are the Vitruvian Man proportions realistic?}
+\label{sec:rq}
+
+Below is the table with the proportions set out by Vitruvius that we can
+investigate with the data that we have. I am interested to see if these
+proportions are accurate by comparing them to the results that we have
+gathered.
 
 \begin{center}
 \begin{tabular}{ l c}
@@ -439,11 +443,20 @@ human body as a set of proportions of one's height. \newline
   Shoulder width & 0.250\\
 \end{tabular}
 \end{center}
-\subsection{Does height affect the body proportions for men and women?}
+\subsection{What measurement besides height explains the most body proportions for?}
 \label{sec:rq2}
 
-\subsection{What body proportions for men and women are realistic today?}
-\label{sec:rq3}
+Height is one of the easiest measurements to relate the size of other
+body parts to. It would be interesting to know what other measurements
+we could use as a substitute. This way if we did not know someone's
+height we might be able to make some observations anyway.
+
+\subsection{Do body proportions differ significantly between males and females?}
+
+Vitruvius and DaVinci only considered the proportions of males when they
+constructed the ideal body proportions. I am interested if the
+proportions for females are the same as for males. If they are not,
+which ones differ the most. \label{sec:rq3}
 
 \section{Data Description}
 \label{sec:data}
@@ -453,21 +466,22 @@ STAT 419 at WSU. Students were supposed to gather measurements from at
 least ten people. The measurements gathered were: height, head height,
 head circumference, arm span, floor to navel, hand length, hand width,
 hand to elbow, elbow to armpit, arm reach, foot length, floor to
-knee-pit, floor to hip, and floor to armpit. The measurements were
-collected by having either the student or another measure the subject
-with a measuring tape such as the ones used by tailors. Students were
-also asked to record which side of the body the measurements came from.
-Some students chose to gather measurements from both sides for the sake
-of completeness.
+knee-pit\footnote{The terms knee-pit and knee height may be used interchangably throughout},
+floor to hip, and floor to armpit. The measurements were collected by
+having either the student or another measure the subject with a
+measuring tape such as the ones used by tailors. Students were also
+asked to record which side of the body the measurements came from. Some
+students chose to gather measurements from both sides for the sake of
+completeness. \newline\newline The data from all students was then
+compiled into one dataset. The total dataset contains 263 rows of
+measurements. Covariates for each row were also collected. Each subject
+was instructed to identify their writing hand, swinging hand, dominant
+eye, eye color, age, gender, and ethnicity. The data collector then
+assigned a value (1-10) assessing the quality of the measurements taken,
+and recorded the amount of minutes that it took to complete the
+measurements.
 
-The data from all students was then compiled into one dataset. The total
-dataset contains 263 rows of measurements. Covariates for each row were
-also collected. Each subject was instructed to identify their writing
-hand, swinging hand, dominant eye, eye color, age, gender, and
-ethnicity. The data collector then assigned a value (1-10) assessing the
-quality of the measurements taken, and recorded the amount of minutes
-that it took to complete the measurements.
-
+\newpage
 \subsection{Summary of Sample}
 \label{sec:data-sample}
 
@@ -533,110 +547,82 @@ significant positive correlations between the height of the knee, and
 both hand length and foot length. This suggests that females with longer
 legs may have longer feet and hands.
 
-\newpage
-
 \section{Key Findings}
 \label{sec:findings}
 
+From running several t-tests on the male proportion data we can find
+which proportions align with the Vitruvian man. From the tests it seems
+that only arm span might be correct. The Vitruvian proportions for head
+height, hand length and knee height seem to be underestimated. In
+contrast the foot length and shoulder width data may have been
+overestimated.
+\footnote{Our shoulder width data was computed by subtracting two times the length of the arm from the arm span. This gives the inner width of shoulders which likely differs from the method used by Vitruvius.}
+Even though most of the Vitruvian proportions seem to disagree with
+where the true average might be, they are remarkably close to where the
+true average probably lies. In most cases, our measurements are not off
+by more than about 3\% of the Vitruvian measurements. The two exceptions
+are shoulder width, and head height. \newline\newline We have also found
+that the proportions for male and female subjects do not differ
+significantly for any of the variables except for foot length. For males
+the proportion of foot length to height is significantly larger than the
+same measurement for females. Testing the height of the knee especially
+shows that the male and female measurements are likely to be almost the
+same. \newline\newline From the earlier calculations of the correlations
+we can determine that hand length is the best measurement for relating
+other measurements for either male or female subjects. For female
+subjects knee height also helps a lot to explain other proportions. For
+male subjects, the head height variable can also explain other
+proportions.
+
+\begin{figure}[!ht]
+    \begin{subfigure}[h]{0.5\textwidth}
+    \centering
+    %  trim={<left> <lower> <right> <upper>}
+    % https://shantoroy.com/latex/add-subfig-in-latex/
+            \includegraphics[clip,scale=0.5]{figures/hand-length-head-height-plot.pdf}
+        \caption{ Hand Length - Head Length Relationship}
+        \label{fig:hand-head-plot}
+    \end{subfigure}
+    \begin{subfigure}[h]{0.5\textwidth}
+    \centering
+        \includegraphics[clip,scale=0.5]{figures/hand-length-foot-length.pdf}
+            \caption{Hand Length - Foot Length Relationship}
+        \label{fig:hand-foot-plot}
+    \end{subfigure}
+    \vspace{2.5mm}
+    \hrule
+    \vspace{2.5mm}
+        \caption{\textbf{ Hand Length Relationships } }
+        \label{fig:hand-plots}
+\end{figure}
+
+\newpage
 \section{Conclusion}
 \label{sec:conclusion}
 
-\newpage
-
-This was a new page
-
-This is a newline. \newline  Here is some more text.
-
-Below are some example code that may benefit you in preparing your
-document. \newline
-
-\vspace{0.25in}
-
-\noindent Please state your name: \hrulefill \newline I was born on
-\hrulefill in \hrulefill \vspace{0.25in}
-
-\begin{equation}
-\label{eq:my-model}
-    Y_{jt} = \alpha + \bm{\beta}X_{jt} + \upsilon_{j}  + \varepsilon_{jt} ,
-\end{equation}
-
-\noindent where \(\alpha\) is the grand mean, \(\upsilon_{j}\) is the
-fixed-time country mean, \(X_{jt}\) (country \(j\) at time \(t\)) is the
-matrix of country-level observations for the vector of aforementioned
-parameters \(\bm{\beta}\), and \(\varepsilon_{jt}\) represents the
-residual idiosyncratic disturbance. Our panel data set consists of
-repeated observations of countries over time. Therefore, we employ
-cross-section time-series models. This approach redefines
-Equation\textasciitilde{}\ref{eq:my-model} by subtracting time-demeaned
-values. This \emph{within} transformation subtracts constant country
-effects for the dependent variable \(\bar{Y_{j}}\), the predictor
-variables \(\bar{X_{j}}\), and the intercept \(\bar{\upsilon_{j}}\):
-
-\begin{equation}
-\label{eq:my-random}
-    (Y_{jt} - \theta \bar{Y_{j}}) = (1-\theta)\alpha + \bm{\beta}(X_{jt} - \bar{X_{j}}) +  (\upsilon_{jt} - \theta \bar{\upsilon_{j}})  ,
-\end{equation}
-
-\noindent If \(\theta = 0\), the model reduces to a basic pooled
-ordinary-least-squares (OLS) model; if \(\theta = 1\), the model reduces
-to a fixed-effects model; otherwise the model represents a
-random-effects model. The pooled OLS estimation is biased if country
-effects exist \citep{Hsiao:2003}. The random-effects model may be
-susceptible to omitted-variable bias \citep{Wooldridge:2006}: bias
-because a predictor was excluded from the model specification.
-Conversely, the fixed-effects model is not susceptible to this bias as
-it captures unobserved intracountry variation around its average
-country-level ``fixed effect." Panel-data analysis commonly has issues
-with heteroskedasticity, serial autocorrelation, and cross-sectional
-autocorrelation.
-
-\vspace{0.5in}
-
-\(i=1\) and \[i = 1\]
-
-\vspace{0.5in}
-
-\begin{tabular}{ c c c c c}
-  1 & 2 & 3 & 4 & 5 \\
-  \hline
-  6 & 7 & 8 & 9 & 10
-\end{tabular}
-
-\vspace{0.5in}
-
-\begin{figure}[!ht]
-%% figures have hrule, tables have hline
-    \hrule
-    \caption{ \textbf{Conceptual Model} }
-    \begin{center}
-        \scalebox{1.00}{    \includegraphics[trim = 0 0 0 0,clip,width=\textwidth]{figures/conceptual-model-v4.pdf} }
-    \end{center}
-    \label{fig:conceptual-model}
-    \hrule
-\end{figure}
-
-See Figure \ref{fig:conceptual-model}.
-
-\newpage
-
-This is a
-footnote\footnote{This is a footnote that can be really long.  \newline You can have multiple paragraphs in the footnote.  You can have \underline{underline} or \textbf{bold} or \emph{italics}.  You can even have a math equation inline. \newline In this section, we review the regression results to summarize our findings.  First, we examine each model for significance, and conclude the hypothesized models fit well with the data.  Second, we conclude that the fixed country effects represent consistent and unbiased parameter estimates.  Third, with the use of the \citet{Driscoll:1998} robust standard errors, we adjust any variance bias to ascertain the significance of these consistent estimates.  Therefore, we are able to make inferences about the hypotheses using our model estimates.  For ease of interpretation across these 12 models, we introduce $\betaSH{{ \ \ }M1}{Total}{1}$ as notation to refer to parameter estimate $\hat{\beta}_{1}$ (HDI) for the Total Sample and (M1) Model 1:  Main Effects.  We proceed by reporting findings for the total sample. \newline The footnotes are automatically converted to "endnotes" and will be included at the end of the document.  It will finish when you have that outer brace like this.}
-that can be placed within a document.
-
-\vspace{1.5in}
-
-Refer to the Appendices in section\textasciitilde{}\ref{sec:appendix}
-where I am going to cite John \citep[pp. 2-3]{Tukey:1962}.
-
-Here is a quote by \citet[pp. 2-3]{Tukey:1962}:
-
-\begin{quote}
-For a long time I have thought I was a statistician, interested in inferences from the particular to the general.  But as I have watched mathematical statistics evolve, I have had to cause to wonder and to doubt. [...] All in all, I have come to feel that my central interest is in \emph{data analysis}, which I take to include among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of (mathematical) statistics which apply to analyzing the data.
-
-Large parts of data analysis are inferential in the sample-to-population sense, but these are only parts, not the whole.  Large parts of data analysis are incisive, laying bare indications which we could not perceive by simple and direct examination of the raw data, but these too are only parts, not the whole.  Some parts of data analysis, as the term is her stretch beyond its philology, are allocation, in the sense that they guide us in the distribution of effort and other valuable considerations in observation, experimentation, or analysis.  Data analysis is a larger and more varied field than inference, or incisive procedures, or allocation.
-
-Statistics has contributed much to data analysis.  In the future it can, and in my view should, contribute more.  For such contributions to exist, and be valuable, it is not necessary that they be direct.  They need not provide new techniques, or better tables for old techniques, in order to influence the practice of data analysis.
-\end{quote}
+From our findings in Section \ref{sec:findings} we can conclude that arm
+span, hand length, foot length, and the knee height are all consistent
+with the Vitruvian measures.
+\footnote{Consistent here means that our measurement proportions are within 3\% of the Vitruvian proportions.}
+The same cannot be said for head height which is larger than the
+Vitruvian proportions, and for shoulder width, which is smaller than the
+Vitruvian proportions. \newline\newline In our investigation of male and
+female subjects we are able to conclude that in most respects the
+Vitruvian proportions hold for females as well as they do for males. The
+one notable exception being foot length, which is larger in males than
+in females. \newline\newline Lastly, I have determined from Section
+\ref{sec:findings} that the hand length proportion can be used in
+determining the other proportions of a human body. From Section
+\ref{sec:data-summary} I have also determined that in the case of female
+subjects, the knee height proportion can help in determining other
+proportions. Likewise, for male subjects, the head height proportion can
+help in determining other proportions. \newline\newline The conclusions
+here may not be able to be generalized widely due the the lack of ethnic
+diversity present in the sample as seen in Figure
+\ref{fig:ethnicity-plot}. The range of ages for this dataset was also
+overwhelmingly of subjects in theirs 20s. Those wishing to improve the
+results of this study should seek to diversify the samples to be able to
+make more confident generalizations of body proportions.
 
 \newpage
 \section{APPENDICES}
@@ -645,27 +631,26 @@ Statistics has contributed much to data analysis.  In the future it can, and in 
 \subsection{Data Provenance}
 \label{sec:appendix-data-provenance}
 
-As was listed in \ref{sec:data} the data collection was assigned to the
-STAT 419 class at WSU, which is around 30 people. This can lead to some
-discrepancies in the way that the data was collected. The data may not
-always have been measured by students, but by the people which their
-handouts were sent to. For the 10 people that I gathered measurements
-for I measured seven people personally, and then had three others send
-me their results by email. The number of data collectors involved can
-also lead to different interpretations of what each measurement means.
-\newline The data collector was given the option to pick which units
-they wished to measure in, and the subject was also asked to identify
-their preferred hand in writing and swinging, what eye is dominant, what
-their eye color is, how old they are, what gender they are, and what
-ethnicity they identify as. These covariates give us a better picture of
-our sample. For example, since we have about equal amounts of male and
-female measurements (\ref{fig:gender-plot}) we can make some
-generalizations. But on the other hand, we do not have much diversity of
-ethnicity in subjects (\ref{fig:ethnicity-plot}) so we can not
-generalize our results as easily.
-
-Some of the measurements seemed like they had more outliers than others.
-This is likely because they were either entered incorrectly or they were
+As was listed in Section \ref{sec:data} the data collection was assigned
+to the STAT 419 class at WSU, which is around 30 people. This can lead
+to some discrepancies in the way that the data was collected. The data
+may not always have been measured by students, but by the people which
+their handouts were sent to. For the 10 people that I gathered
+measurements for I measured seven people personally, and then had three
+others send me their results by email. The number of data collectors
+involved can also lead to different interpretations of what each
+measurement means. \newline\newline The data collector was given the
+option to pick which units they wished to measure in, and the subject
+was also asked to identify their preferred hand in writing and swinging,
+what eye is dominant, what their eye color is, how old they are, what
+gender they are, and what ethnicity they identify as. These covariates
+give us a better picture of our sample. For example, since we have about
+equal amounts of male and female measurements (\ref{fig:gender-plot}) we
+can make some generalizations. But on the other hand, we do not have
+much diversity of ethnicity in subjects (\ref{fig:ethnicity-plot}) so we
+can not generalize our results as easily. \newline\newline Some of the
+measurements seemed like they had more outliers than others. This is
+likely because they were either entered incorrectly or they were
 measured differently. The measurements with significant outliers are:
 hand length, arm reach, floor to knee-pit, and head height. Hand length
 was supposed to be measured from the tip of the middle finger to the
@@ -673,9 +658,10 @@ wrist. Arm reach is supposed to be the measurement from the floor to the
 tip of the middle finger when the arms are pointed upwards above the
 head. The floor to knee-pit measurement is from the heel to the back of
 knee. Lastly the head height measurement is from the chin to the top of
-the head.
+the head. \newline\newline Below shows the handout I used to conduct my
+measurements and which was sent to those whom I could not personally
+measure. \newpage
 
-\newpage
 \subsubsection{Data Collection Handout}
 \label{sec:appendix-data-handout}
 
@@ -691,43 +677,11 @@ the head.
 
 \newpage
 
-\begin{figure}[!ht]
-    \begin{subfigure}[h]{0.5\textwidth}
-    \centering
-    %  trim={<left> <lower> <right> <upper>}
-    % https://shantoroy.com/latex/add-subfig-in-latex/
-            \includegraphics[trim = 0 0 11.25cm 0,clip,scale=1]{figures/Vitruvian.pdf}
-        \caption{ \citet{Thomas:2020} discuss this. }
-        \label{fig:sub-first}
-    \end{subfigure}
-    \begin{subfigure}[h]{0.5\textwidth}
-    \centering
-        \includegraphics[trim = 11.25cm 0 0 0,clip,scale=1]{figures/Vitruvian.pdf}
-            \caption{Schnitt realer Sensor \citep{Thomas:2020}}
-        \label{fig:sub-second}
-    \end{subfigure}
-    \vspace{2.5mm}
-    \hrule
-    \vspace{2.5mm}
-        \caption{\textbf{ Der Sensor in Theorie und Verwirklichung... caption at bottom instead? }  I can write a really long caption if I want. \newline This is using "crop" to include one image and trim it to appear as two.  Likely you will have two separate images if you use this option, so you would set the trim parameters all equal to 0.  \newline   This figure has subfigures which each also have a possible caption.   }
-        \label{fig:combined}
-    \vspace{-2.5mm}
-    \hrule
-\end{figure}
-
-\newpage
-
-\subsection{Preparing the Report Workspace as a subsection}
+\subsection{Preparing the Report Workspace}
 \label{sec:appendix-setup}
 
-\subsubsection{Preparing the Report Workspace as a subsubsection}
-\label{sec:appendix-setup2}
-
-\paragraph{Preparing the Report Workspace as a paragraph}
-\label{sec:appendix-setup3}
-
-\subparagraph{Preparing the Report Workspace as a subparagrah}
-\label{sec:appendix-setup4}
+\subsubsection{Preparing the Data}
+\label{sec:appendix-data-prep}
 
 Below is the necessary functions and libraries required to run the code
 referenced in this document.
@@ -741,45 +695,23 @@ referenced in this document.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Warning: package 'Hmisc' was built under R version 4.0.3
-\end{verbatim}
-
 Below is the code to load the data and prepare it for analysis.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{path.to.secret =}\StringTok{ "C:/Users/Nathan/Dropbox/\_\_student\_access\_\_/\_SECRET\_/"}\NormalTok{;}
 
-\NormalTok{measure =}\StringTok{ }\NormalTok{utils}\OperatorTok{::}\KeywordTok{read.csv}\NormalTok{( }\KeywordTok{paste0}\NormalTok{(path.to.secret, }\StringTok{"measure{-}students.txt"}\NormalTok{), }\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{quote=}\StringTok{""}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"|"}\NormalTok{);}
+\NormalTok{measure =}\StringTok{ }\NormalTok{utils}\OperatorTok{::}\KeywordTok{read.csv}\NormalTok{( }\KeywordTok{paste0}\NormalTok{(path.to.secret, }\StringTok{"measure{-}students.txt"}\NormalTok{), }
+                           \DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{quote=}\StringTok{""}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"|"}\NormalTok{);}
 \CommentTok{\#path.my.github = "https://raw.githubusercontent.com/nshine787/WSU\_STATS419\_FALL2020/";}
 \CommentTok{\# source\_url(paste0(path.my.github, \textquotesingle{}master/functions/functions{-}project{-}measure.R\textquotesingle{}))}
 
 \NormalTok{path.project =}\StringTok{ "C:/Users/Nathan/Documents/GitHub/WSU\_STATS419\_FALL2020/"}
 \KeywordTok{source}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(path.project, }\StringTok{\textquotesingle{}functions/functions{-}project{-}measure.R\textquotesingle{}}\NormalTok{))}
 
-\CommentTok{\# this is your function}
-\CommentTok{\# put in the same "units"}
-\CommentTok{\# merge left/right}
-\CommentTok{\# build proportion data}
-\CommentTok{\# and so on ... }
-\CommentTok{\# relevantColumns = c(\textquotesingle{}height\textquotesingle{}, )}
-\NormalTok{relevantColumns =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}height\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)}
+\NormalTok{relevantColumns =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}height\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}}
+\StringTok{                    hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)}
 \NormalTok{measure.df =}\StringTok{ }\KeywordTok{prepareMeasureData}\NormalTok{(measure);}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'measurements' was built under R version 4.0.3
-\end{verbatim}
-
-\begin{verbatim}
-## Warning in `[<-.factor`(`*tmp*`, iseq, value = "nb"): invalid factor level, NA
-## generated
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{measure.males.df =}\StringTok{ }\KeywordTok{grabGenderRows}\NormalTok{(measure.df,}\StringTok{\textquotesingle{}m\textquotesingle{}}\NormalTok{)[,relevantColumns]}
 \NormalTok{measure.females.df =}\StringTok{ }\KeywordTok{grabGenderRows}\NormalTok{(measure.df,}\StringTok{\textquotesingle{}f\textquotesingle{}}\NormalTok{)[,relevantColumns]}
 
@@ -788,58 +720,122 @@ Below is the code to load the data and prepare it for analysis.
 \end{Highlighting}
 \end{Shaded}
 
+\subsubsection{Creating Figures}
+\label{sec:appendix-create-figures}
+
+The code below shows the distributions of gender and ethnicity in the
+sample as seen in Figure \ref{fig:ge-plot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(}\KeywordTok{sort}\NormalTok{(}\KeywordTok{table}\NormalTok{(measure.df}\OperatorTok{$}\NormalTok{ethnicity),}\DataTypeTok{decreasing=}\OtherTok{TRUE}\NormalTok{), }\DataTypeTok{main =} \StringTok{\textquotesingle{}Ethnicity\textquotesingle{}}\NormalTok{,}
+        \DataTypeTok{ylab =} \StringTok{\textquotesingle{}Number of Subjects\textquotesingle{}}\NormalTok{)}
+\KeywordTok{barplot}\NormalTok{(}\KeywordTok{sort}\NormalTok{(}\KeywordTok{table}\NormalTok{(measure.df}\OperatorTok{$}\NormalTok{gender),}\DataTypeTok{decreasing=}\OtherTok{TRUE}\NormalTok{), }\DataTypeTok{main =} \StringTok{\textquotesingle{}Gender\textquotesingle{}}\NormalTok{, }
+        \DataTypeTok{ylab =} \StringTok{\textquotesingle{}Number of Subjects\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 Below is the code to generate the summary statistics and save them as a
-table that you see in Section \ref{sec:data-summary}.
+table that you see in Section \ref{sec:data-summary}. It uses a function
+created by Monte Shaffer, the instructor of the STAT 419 class at WSU.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(measure.males.df)}
+\NormalTok{path.tables =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(path.project,}\StringTok{\textquotesingle{}PROJECT{-}01/tables/\textquotesingle{}}\NormalTok{)}
+\NormalTok{file.correlation =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(path.tables,}\StringTok{"male{-}correlation{-}table.tex"}\NormalTok{);}
+
+\NormalTok{myData =}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(proportions.male);}
+\NormalTok{myData =}\StringTok{ }\NormalTok{myData[,}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{15}\NormalTok{)]}
+
+\KeywordTok{buildLatexCorrelationTable}\NormalTok{(myData, }
+  \DataTypeTok{rotateTable =} \OtherTok{FALSE}\NormalTok{,}
+  \DataTypeTok{width.table =} \DecValTok{1}\NormalTok{,}
+  \DataTypeTok{width.names =} \StringTok{"30mm"}\NormalTok{,}
+  \DataTypeTok{myFile =}\NormalTok{ file.correlation,}
+  \DataTypeTok{round.digits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}
+  \DataTypeTok{myLabel =} \StringTok{"table:correlation{-}male"}\NormalTok{,}
+  \DataTypeTok{myCaption =} \StringTok{"Descriptive Statistics and Correlation Analysis (MALE)"}
+\NormalTok{  );}
+\KeywordTok{Sys.sleep}\NormalTok{(}\DecValTok{2}\NormalTok{);}
+
+\NormalTok{file.correlation =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(path.tables,}\StringTok{"female{-}correlation{-}table.tex"}\NormalTok{);}
+
+\NormalTok{myData =}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(proportions.female);}
+\NormalTok{myData =}\StringTok{ }\NormalTok{myData[,}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{15}\NormalTok{)]}
+
+\KeywordTok{buildLatexCorrelationTable}\NormalTok{(myData, }
+  \DataTypeTok{rotateTable =} \OtherTok{FALSE}\NormalTok{,}
+  \DataTypeTok{width.table =} \DecValTok{1}\NormalTok{,}
+  \DataTypeTok{width.names =} \StringTok{"30mm"}\NormalTok{,}
+  \DataTypeTok{myFile =}\NormalTok{ file.correlation,}
+  \DataTypeTok{round.digits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}
+  \DataTypeTok{myLabel =} \StringTok{"table:correlation{-}female"}\NormalTok{,}
+  \DataTypeTok{myCaption =} \StringTok{"Descriptive Statistics and Correlation Analysis (FEMALE)"}
+\NormalTok{  );}
+\KeywordTok{Sys.sleep}\NormalTok{(}\DecValTok{2}\NormalTok{);}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-##      height       head.height       arm.span      hand.length   
-##  Min.   :137.0   Min.   :17.78   Min.   :139.0   Min.   :15.00  
-##  1st Qu.:172.0   1st Qu.:21.59   1st Qu.:169.5   1st Qu.:18.30  
-##  Median :177.8   Median :23.00   Median :177.8   Median :19.05  
-##  Mean   :176.4   Mean   :22.98   Mean   :178.3   Mean   :19.15  
-##  3rd Qu.:182.7   3rd Qu.:24.00   3rd Qu.:185.2   3rd Qu.:20.00  
-##  Max.   :191.1   Max.   :29.50   Max.   :224.0   Max.   :24.00  
-##  NA's   :8       NA's   :7       NA's   :8       NA's   :4      
-##   foot.length    floor.kneepit   shoulder.width 
-##  Min.   :20.00   Min.   :38.00   Min.   : 1.50  
-##  1st Qu.:25.09   1st Qu.:44.77   1st Qu.:23.81  
-##  Median :26.02   Median :47.00   Median :36.00  
-##  Mean   :26.15   Mean   :47.23   Mean   :35.80  
-##  3rd Qu.:27.59   3rd Qu.:50.00   3rd Qu.:44.00  
-##  Max.   :30.50   Max.   :58.00   Max.   :92.00  
-##  NA's   :9       NA's   :10      NA's   :18
-\end{verbatim}
+Below is the code to generate the plots in Section \ref{sec:findings}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(measure.females.df)}
+\NormalTok{proportions.both =}\StringTok{ }\KeywordTok{merge.data.frame}\NormalTok{(myDataMale,myDataFemale,}\DataTypeTok{all.x=}\OtherTok{TRUE}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(proportions.both}\OperatorTok{$}\NormalTok{hand.length,proportions.both}\OperatorTok{$}\NormalTok{head.height, }
+     \DataTypeTok{xlab =} \StringTok{\textquotesingle{}Hand Length Proportion\textquotesingle{}}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{\textquotesingle{}Head Height Proportion\textquotesingle{}}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(proportions.both}\OperatorTok{$}\NormalTok{head.height}\OperatorTok{\textasciitilde{}}\NormalTok{proportions.both}\OperatorTok{$}\NormalTok{hand.length), }\DataTypeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(proportions.both}\OperatorTok{$}\NormalTok{hand.length, proportions.both}\OperatorTok{$}\NormalTok{foot.length, }
+     \DataTypeTok{xlab =} \StringTok{\textquotesingle{}Hand Length Proportion\textquotesingle{}}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{\textquotesingle{}Foot Length Proportion\textquotesingle{}}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(proportions.both}\OperatorTok{$}\NormalTok{foot.length}\OperatorTok{\textasciitilde{}}\NormalTok{proportions.both}\OperatorTok{$}\NormalTok{hand.length), }\DataTypeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-##      height       head.height       arm.span      hand.length   
-##  Min.   :140.0   Min.   :17.50   Min.   :141.7   Min.   :13.97  
-##  1st Qu.:158.0   1st Qu.:20.31   1st Qu.:157.2   1st Qu.:16.80  
-##  Median :162.6   Median :21.50   Median :163.0   Median :17.35  
-##  Mean   :162.5   Mean   :21.75   Mean   :164.1   Mean   :17.57  
-##  3rd Qu.:167.7   3rd Qu.:22.86   3rd Qu.:171.4   3rd Qu.:18.38  
-##  Max.   :181.0   Max.   :33.02   Max.   :198.5   Max.   :21.20  
-##  NA's   :8       NA's   :7       NA's   :9       NA's   :3      
-##   foot.length    floor.kneepit   shoulder.width 
-##  Min.   :13.50   Min.   :34.92   Min.   : 1.70  
-##  1st Qu.:22.54   1st Qu.:41.00   1st Qu.:22.00  
-##  Median :23.50   Median :43.00   Median :31.11  
-##  Mean   :23.62   Mean   :43.49   Mean   :30.28  
-##  3rd Qu.:24.40   3rd Qu.:45.72   3rd Qu.:36.83  
-##  Max.   :27.50   Max.   :52.38   Max.   :61.50  
-##  NA's   :13      NA's   :13      NA's   :13
-\end{verbatim}
+\subsubsection{Running the Tests}
+\label{sec:appendix-tests}
+
+Below is the code to generate the t-tests in Section \ref{sec:findings}.
+The first chunk compares the male proportions to the ideal Vitruvian
+proportions. The second chunk tests the male and female observations
+against each other for each variable to see if the proportions vary
+significantly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myData =}\StringTok{ }\NormalTok{proportions.male[,}\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}
+\NormalTok{                             ,}\StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)]}
+\NormalTok{proportions.vitruvian =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.125}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.1666667}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.25}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{dim}\NormalTok{(myData)[}\DecValTok{2}\NormalTok{])}
+\NormalTok{\{}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{colnames}\NormalTok{(myData)[i])}
+\NormalTok{  test.result =}\StringTok{ }\KeywordTok{t.test}\NormalTok{(myData[,i], }\DataTypeTok{mu=}\NormalTok{proportions.vitruvian[i], }\DataTypeTok{alternative=}\StringTok{\textquotesingle{}two.sided\textquotesingle{}}\NormalTok{)}
+  \KeywordTok{print}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{p.value)}
+  \KeywordTok{print}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{conf.int)}
+\NormalTok{  error =}\StringTok{ }\KeywordTok{abs}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{]}\OperatorTok{{-}}\NormalTok{test.result}\OperatorTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{])}\OperatorTok{/}\NormalTok{proportions.vitruvian[i]}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}Error percent: \textquotesingle{}}\NormalTok{,error))}
+  
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myDataMale =}\StringTok{ }\NormalTok{proportions.male[,}\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}\NormalTok{,}
+                                 \StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)]}
+\NormalTok{myDataFemale =}\StringTok{ }\NormalTok{proportions.female[,}\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}
+\NormalTok{                                     ,}\StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)]}
+\NormalTok{proportions.vitruvian =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.125}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.1666667}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.25}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{dim}\NormalTok{(myData)[}\DecValTok{2}\NormalTok{])}
+\NormalTok{\{}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{colnames}\NormalTok{(myData)[i])}
+\NormalTok{  test.result =}\StringTok{ }\KeywordTok{t.test}\NormalTok{(myDataMale[,i],myDataFemale[,i])}
+  \KeywordTok{print}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{p.value)}
+  \KeywordTok{print}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{conf.int)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
 
 
 

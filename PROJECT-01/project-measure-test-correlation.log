@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.7)  8 NOV 2020 11:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.7)  9 NOV 2020 01:43
 entering extended mode
 **./project-measure-test-correlation.tex
 (project-measure-test-correlation.tex
@@ -788,12 +788,12 @@ Underfull \hbox (badness 10000) in alignment at lines 32--32
  []
 
 ) [4] [5] [6] (tables/female-correlation-table.tex
-Overfull \hbox (6.63913pt too wide) in alignment at lines 32--32
+Overfull \hbox (10.88913pt too wide) in alignment at lines 32--32
 [][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
 ) (tables/male-correlation-table.tex
-Overfull \hbox (6.25023pt too wide) in alignment at lines 32--32
+Overfull \hbox (10.50023pt too wide) in alignment at lines 32--32
 [][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
@@ -801,7 +801,7 @@ Overfull \hbox (6.25023pt too wide) in alignment at lines 32--32
 
 Package endnotes Warning: No endnotes found (file project-measure-test-correlat
 ion.ent does not exist)
-(endnotes)                 on input line 599.
+(endnotes)                 on input line 581.
 
 [8] (project-measure-test-correlation.bbl) [9] (project-measure-test-correlatio
 n.toc)
@@ -843,7 +843,7 @@ ram Files/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX/fonts
 /type1/public/lm/lmtk10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt
 10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Program F
 iles/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on project-measure-test-correlation.pdf (10 pages, 333058 bytes)
+Output written on project-measure-test-correlation.pdf (10 pages, 332037 bytes)
 .
 PDF statistics:
  113 PDF objects out of 1000 (max. 8388607)

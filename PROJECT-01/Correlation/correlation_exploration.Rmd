@@ -126,3 +126,50 @@ for (i in colnames(myData))
   alreadyCols = c(alreadyCols, i)
 }
 ```
+
+```{r, t-tests-vitruvian}
+myData = proportions.male[,c('head.height','arm.span','hand.length','foot.length','floor.kneepit','shoulder.width')]
+proportions.vitruvian = c(0.125,1,0.1,0.1666667,0.25,0.25)
+for (i in 1:dim(myData)[2])
+{
+  print(colnames(myData)[i])
+  test.result = t.test(myData[,i], mu=proportions.vitruvian[i], alternative='two.sided')
+  print(test.result$p.value)
+  print(test.result$conf.int)
+  error = abs(test.result$conf.int[1]-test.result$conf.int[2])/proportions.vitruvian[i]
+  print(paste0('Error percent: ',error))
+}
+```
+
+```{r, t-tests-mf}
+myDataMale = proportions.male[,c('head.height','arm.span','hand.length','foot.length','floor.kneepit','shoulder.width')]
+myDataFemale = proportions.female[,c('head.height','arm.span','hand.length','foot.length','floor.kneepit','shoulder.width')]
+proportions.vitruvian = c(0.125,1,0.1,0.1666667,0.25,0.25)
+for (i in 1:dim(myData)[2])
+{
+  print(colnames(myData)[i])
+  test.result = t.test(myDataMale[,i],myDataFemale[,i])
+  print(test.result$p.value)
+  print(test.result$conf.int)
+}
+```
+
+
+```{r, prop-plots}
+proportions.both = merge.data.frame(myDataMale,myDataFemale,all.x=TRUE)
+
+pdf(file='hand-length-head-height-plot.pdf')
+plot(proportions.both$hand.length,proportions.both$head.height, xlab = 'Hand Length Proportion', ylab='Head Height Proportion')
+abline(lm(proportions.both$head.height~proportions.both$hand.length), col='red')
+dev.off()
+
+
+plot(proportions.both$shoulder.width,proportions.both$arm.span, xlab='Shoulder Width Proportion', ylab='Arm Span Proportion')
+abline(lm(proportions.both$arm.span~proportions.both$shoulder.width),col='red')
+
+pdf(file='hand-length-foot-length.pdf')
+plot(proportions.both$hand.length, proportions.both$foot.length, xlab = 'Hand Length Proportion', ylab='Foot Length Proportion')
+abline(lm(proportions.both$foot.length~proportions.both$hand.length), col='red')
+dev.off()
+```
+

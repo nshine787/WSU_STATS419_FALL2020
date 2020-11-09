@@ -138,17 +138,8 @@ proportions.female = measure.females.df/measure.females.df$height
 file.correlation = paste0(path.tables,"male-correlation-table.tex");
 
 myData = as.matrix(proportions.male);  # numeric values only, only what will appear in table
-# myData = myData[,is.nan()] = NA
-# myData[is.nan(myData)] = NA
-set.seed(456)
 myData = myData[,c(2,4,6,11,12,15)]
-# myData = myData[sample(1:nrow(myData),50),]
-# https://www.overleaf.com/read/srzhrcryjpwn
-# myData = myData[,c(2)]
-# https://www.overleaf.com/read/srzhrcryjpwn
-# keepaspectratio of include graphics 
-# could scale \input if still too big ...
-# https://tex.stackexchange.com/questions/13460/scalebox-knowing-how-much-it-scales#13487
+
 buildLatexCorrelationTable(myData, 
   rotateTable = FALSE,
   width.table = 1, # best for given data ... 0.95 when rotateTable = FALSE
@@ -158,7 +149,7 @@ buildLatexCorrelationTable(myData,
                                       space.SD.corr = "5mm",
                                       space.between = "2mm",
   myFile = file.correlation,
-  round.digits = c(2,3,2),  # M, SD, corr
+  round.digits = c(3,3,2),  # M, SD, corr
   # myNames = c("Diameter (in)", "Height (ft)", "Volume (ft$^3$)") 
   myLabel = "table:correlation-male",
   myCaption = "Descriptive Statistics and Correlation Analysis (MALE)"
@@ -174,24 +165,15 @@ Sys.sleep(2); # in case Knit-PDF doesn't like that I just created the file...
 file.correlation = paste0(path.tables,"female-correlation-table.tex");
 
 myData = as.matrix(proportions.female);  # numeric values only, only what will appear in table
-# myData = myData[,is.nan()] = NA
-# myData[is.nan(myData)] = NA
-set.seed(456)
 myData = myData[,c(2,4,6,11,12,15)]
-# myData = myData[sample(1:nrow(myData),50),]
-# https://www.overleaf.com/read/srzhrcryjpwn
-# myData = myData[,c(2)]
-# https://www.overleaf.com/read/srzhrcryjpwn
-# keepaspectratio of include graphics 
-# could scale \input if still too big ...
-# https://tex.stackexchange.com/questions/13460/scalebox-knowing-how-much-it-scales#13487
+
 buildLatexCorrelationTable(myData, 
   rotateTable = FALSE,
   width.table = 1, # best for given data ... 0.95 when rotateTable = FALSE
                       # 0.60 when rotateTable = TRUE
   width.names = "30mm",
   myFile = file.correlation,
-  round.digits = c(2,3,2),
+  round.digits = c(3,3,2),
   # myNames = c("Diameter (in)", "Height (ft)", "Volume (ft$^3$)") 
   myLabel = "table:correlation-female",
   myCaption = "Descriptive Statistics and Correlation Analysis (FEMALE)"

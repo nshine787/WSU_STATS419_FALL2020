@@ -113,7 +113,7 @@ HERE\vspace{0.05in} \newline\normalsize\emph{Washington State
 University}  }
 
 
-\date{November 08, 2020}
+\date{November 09, 2020}
 \setcounter{secnumdepth}{3}
 
 \usepackage{titlesec}
@@ -387,7 +387,7 @@ growth curves; Richard's curve; simulated critical points \par
     
     \hbox{\vrule height .2pt width 39.14pc}
     \vskip 5pt 
-    \hfill \textbf{\textcolor{WSU.gray}{ November 08, 2020 } }
+    \hfill \textbf{\textcolor{WSU.gray}{ November 09, 2020 } }
     \vskip 5pt 
     
 \end{abstract}
@@ -518,17 +518,8 @@ growth curves; Richard's curve; simulated critical points \par
 \NormalTok{file.correlation =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(path.tables,}\StringTok{"male{-}correlation{-}table.tex"}\NormalTok{);}
 
 \NormalTok{myData =}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(proportions.male);  }\CommentTok{\# numeric values only, only what will appear in table}
-\CommentTok{\# myData = myData[,is.nan()] = NA}
-\CommentTok{\# myData[is.nan(myData)] = NA}
-\KeywordTok{set.seed}\NormalTok{(}\DecValTok{456}\NormalTok{)}
 \NormalTok{myData =}\StringTok{ }\NormalTok{myData[,}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{15}\NormalTok{)]}
-\CommentTok{\# myData = myData[sample(1:nrow(myData),50),]}
-\CommentTok{\# https://www.overleaf.com/read/srzhrcryjpwn}
-\CommentTok{\# myData = myData[,c(2)]}
-\CommentTok{\# https://www.overleaf.com/read/srzhrcryjpwn}
-\CommentTok{\# keepaspectratio of include graphics }
-\CommentTok{\# could scale \textbackslash{}input if still too big ...}
-\CommentTok{\# https://tex.stackexchange.com/questions/13460/scalebox{-}knowing{-}how{-}much{-}it{-}scales\#13487}
+
 \KeywordTok{buildLatexCorrelationTable}\NormalTok{(myData, }
   \DataTypeTok{rotateTable =} \OtherTok{FALSE}\NormalTok{,}
   \DataTypeTok{width.table =} \DecValTok{1}\NormalTok{, }\CommentTok{\# best for given data ... 0.95 when rotateTable = FALSE}
@@ -538,7 +529,7 @@ growth curves; Richard's curve; simulated critical points \par
                                       \DataTypeTok{space.SD.corr =} \StringTok{"5mm"}\NormalTok{,}
                                       \DataTypeTok{space.between =} \StringTok{"2mm"}\NormalTok{,}
   \DataTypeTok{myFile =}\NormalTok{ file.correlation,}
-  \DataTypeTok{round.digits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),  }\CommentTok{\# M, SD, corr}
+  \DataTypeTok{round.digits =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),  }\CommentTok{\# M, SD, corr}
   \CommentTok{\# myNames = c("Diameter (in)", "Height (ft)", "Volume (ft$\^{}3$)") }
   \DataTypeTok{myLabel =} \StringTok{"table:correlation{-}male"}\NormalTok{,}
   \DataTypeTok{myCaption =} \StringTok{"Descriptive Statistics and Correlation Analysis (MALE)"}
@@ -554,24 +545,15 @@ growth curves; Richard's curve; simulated critical points \par
 \NormalTok{file.correlation =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(path.tables,}\StringTok{"female{-}correlation{-}table.tex"}\NormalTok{);}
 
 \NormalTok{myData =}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(proportions.female);  }\CommentTok{\# numeric values only, only what will appear in table}
-\CommentTok{\# myData = myData[,is.nan()] = NA}
-\CommentTok{\# myData[is.nan(myData)] = NA}
-\KeywordTok{set.seed}\NormalTok{(}\DecValTok{456}\NormalTok{)}
 \NormalTok{myData =}\StringTok{ }\NormalTok{myData[,}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{15}\NormalTok{)]}
-\CommentTok{\# myData = myData[sample(1:nrow(myData),50),]}
-\CommentTok{\# https://www.overleaf.com/read/srzhrcryjpwn}
-\CommentTok{\# myData = myData[,c(2)]}
-\CommentTok{\# https://www.overleaf.com/read/srzhrcryjpwn}
-\CommentTok{\# keepaspectratio of include graphics }
-\CommentTok{\# could scale \textbackslash{}input if still too big ...}
-\CommentTok{\# https://tex.stackexchange.com/questions/13460/scalebox{-}knowing{-}how{-}much{-}it{-}scales\#13487}
+
 \KeywordTok{buildLatexCorrelationTable}\NormalTok{(myData, }
   \DataTypeTok{rotateTable =} \OtherTok{FALSE}\NormalTok{,}
   \DataTypeTok{width.table =} \DecValTok{1}\NormalTok{, }\CommentTok{\# best for given data ... 0.95 when rotateTable = FALSE}
                       \CommentTok{\# 0.60 when rotateTable = TRUE}
   \DataTypeTok{width.names =} \StringTok{"30mm"}\NormalTok{,}
   \DataTypeTok{myFile =}\NormalTok{ file.correlation,}
-  \DataTypeTok{round.digits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}
+  \DataTypeTok{round.digits =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}
   \CommentTok{\# myNames = c("Diameter (in)", "Height (ft)", "Volume (ft$\^{}3$)") }
   \DataTypeTok{myLabel =} \StringTok{"table:correlation{-}female"}\NormalTok{,}
   \DataTypeTok{myCaption =} \StringTok{"Descriptive Statistics and Correlation Analysis (FEMALE)"}
