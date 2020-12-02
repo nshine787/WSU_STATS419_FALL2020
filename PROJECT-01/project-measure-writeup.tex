@@ -703,11 +703,8 @@ Below is the code to load the data and prepare it for analysis.
 
 \NormalTok{measure =}\StringTok{ }\NormalTok{utils}\OperatorTok{::}\KeywordTok{read.csv}\NormalTok{( }\KeywordTok{paste0}\NormalTok{(path.to.secret, }\StringTok{"measure{-}students.txt"}\NormalTok{), }
                            \DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{quote=}\StringTok{""}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"|"}\NormalTok{);}
-\CommentTok{\#path.my.github = "https://raw.githubusercontent.com/nshine787/WSU\_STATS419\_FALL2020/";}
-\CommentTok{\# source\_url(paste0(path.my.github, \textquotesingle{}master/functions/functions{-}project{-}measure.R\textquotesingle{}))}
-
-\NormalTok{path.project =}\StringTok{ "C:/Users/Nathan/Documents/GitHub/WSU\_STATS419\_FALL2020/"}
-\KeywordTok{source}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(path.project, }\StringTok{\textquotesingle{}functions/functions{-}project{-}measure.R\textquotesingle{}}\NormalTok{))}
+\NormalTok{path.my.github =}\StringTok{ "https://raw.githubusercontent.com/nshine787/WSU\_STATS419\_FALL2020/"}\NormalTok{;}
+\KeywordTok{source\_url}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(path.my.github, }\StringTok{\textquotesingle{}master/functions/functions{-}project{-}measure.R\textquotesingle{}}\NormalTok{))}
 
 \NormalTok{relevantColumns =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}height\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}}
 \StringTok{                    hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)}

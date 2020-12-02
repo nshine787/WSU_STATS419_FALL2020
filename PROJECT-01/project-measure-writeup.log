@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.7)  9 NOV 2020 02:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.7)  9 NOV 2020 02:32
 entering extended mode
 **./project-measure-writeup.tex
 (project-measure-writeup.tex
@@ -901,11 +901,11 @@ File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 AED: lastpage setting LastPage
 [14] (project-measure-writeup.aux) ) 
 Here is how much of TeX's memory you used:
- 15462 strings out of 479799
- 233123 string characters out of 2879553
+ 15460 strings out of 479799
+ 233096 string characters out of 2879553
  590842 words of memory out of 3000000
- 32137 multiletter control sequences out of 15000+200000
- 625895 words of font info for 83 fonts, out of 3000000 for 9000
+ 32136 multiletter control sequences out of 15000+200000
+ 625588 words of font info for 82 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,13n,84p,779b,555s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/lm
@@ -927,9 +927,9 @@ MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/pub
 lic/lm/lmtk10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:
 /Program Files/MiKTeX/fonts/type1/public/lm/lmtti10.pfb><C:/Program Files/MiKTe
 X/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on project-measure-writeup.pdf (14 pages, 502378 bytes).
+Output written on project-measure-writeup.pdf (14 pages, 495841 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
+ 190 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  67 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -158,10 +158,18 @@ for (i in 1:dim(myData)[2])
 ```{r, prop-plots}
 proportions.both = merge.data.frame(myDataMale,myDataFemale,all.x=TRUE)
 
+pdf(file='hand-length-head-height-plot.pdf')
 plot(proportions.both$hand.length,proportions.both$head.height, xlab = 'Hand Length Proportion', ylab='Head Height Proportion')
 abline(lm(proportions.both$head.height~proportions.both$hand.length), col='red')
+dev.off()
 
+
+plot(proportions.both$shoulder.width,proportions.both$arm.span, xlab='Shoulder Width Proportion', ylab='Arm Span Proportion')
+abline(lm(proportions.both$arm.span~proportions.both$shoulder.width),col='red')
+
+pdf(file='hand-length-foot-length.pdf')
 plot(proportions.both$hand.length, proportions.both$foot.length, xlab = 'Hand Length Proportion', ylab='Foot Length Proportion')
 abline(lm(proportions.both$foot.length~proportions.both$hand.length), col='red')
+dev.off()
 ```
 
