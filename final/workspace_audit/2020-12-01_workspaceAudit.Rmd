@@ -1,5 +1,5 @@
 ---
-title: 'R Notebook: Workspace Audit for Nathan Shine'
+title: 'R Notebook: Workspace Audit for nathan_shine'
 output:
   html_document:
     df_print: paged
@@ -56,8 +56,8 @@ You should place this file in your github local path for this course, in a subfo
 
 ## Set your WSU id and location of your github USERNAME/REPO
 ```{r}
-wsu.id = "monte_shaffer"; # change this to yours.
-github.repository = "MonteShaffer/WSU_STATS419_FALL2020";
+wsu.id = "nathan_shine"; # change this to yours.
+github.repository = "nshine787/WSU_STATS419_FALL2020";
 # be sure to change the notebook title at the top of this document to be "you" based on your wsu.id
 ```
 
@@ -65,19 +65,19 @@ github.repository = "MonteShaffer/WSU_STATS419_FALL2020";
 Browse to <https://github.com/MonteShaffer/WSU_STATS419_FALL2020/graphs/code-frequency> where you replace my repository name with yours.  Screenshot and include the graphic in this folder, named "github-code-frequency.png".
 
 <IMG src='github-code-frequency.png' style="border: 2px black solid;" />
-<div>**Source: <a href="https://github.com/MonteShaffer/WSU_STATS419_FALL2020/graphs/code-frequency">GitHub</a>**</div>
+<div>**Source: <a href="https://github.com/nshine787/WSU_STATS419_FALL2020/graphs/code-frequency">GitHub</a>**</div>
 
 
 ### Commit Frequency on GitHub
-Browse to <https://github.com/MonteShaffer/WSU_STATS419_FALL2020/graphs/commit-activity> where you replace my repository name with yours.  Screenshot and include the graphic in this folder, named "github-commits.png". 
+Browse to <https://github.com/nshine787/WSU_STATS419_FALL2020/graphs/commit-activity> where you replace my repository name with yours.  Screenshot and include the graphic in this folder, named "github-commits.png". 
 
 <IMG src='github-commits.png' style="border: 2px black solid;" />
-<div>**Source: <a href="https://github.com/MonteShaffer/WSU_STATS419_FALL2020/graphs/commit-activity">GitHub</a>**</div>
+<div>**Source: <a href="https://github.com/nshine787/WSU_STATS419_FALL2020/graphs/commit-activity">GitHub</a>**</div>
 
 
 ## General Workspace Environment Data
 ```{r}
-path.to.git.local = "C:/_git_/WSU_STATS419_FALL2020/";
+path.to.git.local = "C:/Users/Nathan/Documents/GitHub/WSU_STATS419_FALL2020/";
 setwd(path.to.git.local);
 
 path.to.git.final = paste0(path.to.git.local,"final/");
@@ -147,7 +147,7 @@ my.git = list();
 raw.df = read.csv(paste0(path.to.git.final,"git-history.log"), header=FALSE, sep="|", quote="");
 colnames(raw.df) = c("hash","tree","parent","author.date","author.email","author.name","commit.date","commit.email","commit.name","commit.notes","content.f","content.s","content.b");
 #raw.df;
-
+raw.df = raw.df[raw.df$content.b != "",]
 total.commits = nrow(raw.df);
 
 
@@ -170,6 +170,7 @@ for(i in 1:total.commits)
   for(j in 1:length(my.detail))
     {
     val = as.numeric( my.detail[[j]][1] );
+    #print(i,j)
     row[j] = val;
     }
   changes.df = rbind(changes.df,row);
@@ -276,7 +277,5 @@ This audit is worth 50 points.  Based on your activity in the workspace, self-as
 Be certain to review the graphs and include self-reflective commentary on your work habits: day of week, hour of day, and so on.
 
 <pre style="font-weight: bold; font-family: monospace; white-space: pre-wrap; background-color: #717171; border: 2px solid #981e32;">
--- WRITE SOMETHING HERE --
-
-I deserve XX/50 points because ...
+I deserve 40/50 points because while I used the workspace model provided (Git, Github, Rstudio) I did not always use them consistently or as much as I could have. I used RStudio consistently because this is what our assignments, projects, and teaching files were in, so this was no problem. I was really happy to learn how to use Git and Github in this class because they always seemed kind of confusing and I knew it was a good idea to learn how they worked. Since being introduced to both in this class, I have become much more comfortable using them and have even used both in one of my Python projects! However, a lot of the time I only worked locally on my machine, especially when working with the teaching notebooks. During the midterm project I definitely used Git and Github a lot more because this way I would have a good backup system in place in case anything happened.
 </pre>

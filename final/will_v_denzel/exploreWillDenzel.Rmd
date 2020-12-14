@@ -1,0 +1,318 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(ggplot2)
+library(devtools);
+library(imdb);
+library(humanVerseWSU);
+
+path.github = "https://raw.githubusercontent.com/MonteShaffer/humanVerseWSU/master/";
+
+include.me = paste0(path.github, "misc/functions-nlp.R");
+source_url( include.me );
+include.me = paste0(path.github, "misc/functions-nlp-str.R");
+source_url( include.me );
+include.me = paste0(path.github, "misc/functions-nlp-stack.R");
+source_url( include.me );
+include.me = paste0(path.github, "misc/functions-nlp-pos.R");
+source_url( include.me );
+
+include.me = paste0(path.github, "humanVerseWSU/R/functions-encryption.R");
+source_url( include.me );
+
+path.to.nascent = "C:/Users/Nathan/Dropbox/__student_access__/unit_02_confirmatory_data_analysis/nascent/";
+
+folder.nlp = "nlp/";
+path.to.nlp = paste0(path.to.nascent, folder.nlp);
+
+###### UPDATES TO dataframe subset function ######
+# inflation adjustments for NA ... and improvements on subsetting
+include.me = paste0(path.github, "humanVerseWSU/R/functions-dataframe.R");
+source_url( include.me );
+
+include.me = paste0(path.github, "humanVerseWSU/R/functions-inflation.R");
+source_url( include.me );
+
+imdb::loadDataIMDB();
+humanVerseWSU::loadInflationData();
+```
+
+```{r}
+colnames(imdb.data$all.actors.movies)
+yearMillions = imdb.data$all.actors.movies[,c('year','millions')]
+totalMillions = setNames(aggregate(yearMillions$millions, by=list(Category=yearMillions$year),FUN=sum, na.rm=TRUE),c('year','millions'))
+totalMillions = totalMillions[!is.na(totalMillions$millions),]
+totalMillions = totalMillions[(totalMillions$year >= min(inflation.df$year)) & (totalMillions$year <=max(inflation.df$year)),]
+standardYear = 2019
+standardYearCol =paste0('millions',standardYear)
+totalMillions = standardizeDollarsInDataFrame(totalMillions, standardYear, "millions", "year",standardYearCol)
+plot(totalMillions$year,totalMillions$'millions2019')
+totalMillions
+```
+
+```{r, movies-from-year}
+movieData = imdb.data$all.actors.movies
+movieData = movieData[(movieData$year == 2020) & (!is.na(movieData$millions)),c('title','millions')]
+movieData = movieData[!is.na(movieData$millions),]
+movieData
+movieData[order(movieData$millions,decreasing = TRUE),]
+```
+
+
+```{r, read-will-movies}
+will.nmid = "nm0000226";
+will.movies = IMDB.getMoviesForPerson(will.nmid);
+will.movies.ttid = will.movies$ttid;
+
+will.movies = standardizeDollarsInDataFrame(will.movies, standardYear, "millions", "year", "millions2019");
+
+# adjust for inflation ...
+will.movies = sortDataFrameByNumericColumns(will.movies, "millions2019", "DESC");  ## NA's go to end ...
+will.movies$rank.money = 1:nrow(will.movies);
+
+
+will.movies = sortDataFrameByNumericColumns(will.movies, "minutes", "DESC");
+will.movies$rank.minutes = 1:nrow(will.movies);
+
+
+will.movies = sortDataFrameByNumericColumns(will.movies, "ratings", "DESC");
+will.movies$rank.ratings = 1:nrow(will.movies);
+
+will.movies = sortDataFrameByNumericColumns(will.movies, "metacritic", "DESC");
+will.movies$rank.metacritic = 1:nrow(will.movies);
+
+will.movies = sortDataFrameByNumericColumns(will.movies, "votes", "DESC");
+will.movies$rank.votes = 1:nrow(will.movies);
+
+will.movies = sortDataFrameByNumericColumns(will.movies, "year", "ASC");
+will.movies$rank.year = 1:nrow(will.movies);
+
+
+will.movies
+```
+
+```{r, calculate-will-year-percent}
+totalMillions = setNames(totalMillions, c('year','totalMillions','totalMillions2019'))
+will.movies.merged = merge(will.movies, totalMillions, by='year')
+will.movies.merged$millionsPercentOfYear = will.movies.merged$millions2019/will.movies.merged$totalMillions2019*100
+will.movies.merged[,c('year','rank','title','millionsPercentOfYear')]
+will.movies.impact = setNames(aggregate(will.movies.merged$millionsPercentOfYear, by=list(Category=will.movies.merged$year),FUN=sum, na.rm=TRUE),c('year','percentBoxOffice'))
+will.movies.impact
+```
+
+```{r,read-denzel-movies}
+denzel.nmid = "nm0000243";
+denzel.movies = IMDB.getMoviesForPerson(denzel.nmid);
+denzel.movies.ttid = denzel.movies$ttid;
+
+denzel.movies = standardizeDollarsInDataFrame(denzel.movies, standardYear, "millions", "year", "millions2019");
+
+# adjust for inflation ...
+denzel.movies = sortDataFrameByNumericColumns(denzel.movies, "millions2019", "DESC");  ## NA's go to end ...
+denzel.movies$rank.money = 1:nrow(denzel.movies);
+
+
+denzel.movies = sortDataFrameByNumericColumns(denzel.movies, "minutes", "DESC");
+denzel.movies$rank.minutes = 1:nrow(denzel.movies);
+
+
+denzel.movies = sortDataFrameByNumericColumns(denzel.movies, "ratings", "DESC");
+denzel.movies$rank.ratings = 1:nrow(denzel.movies);
+
+denzel.movies = sortDataFrameByNumericColumns(denzel.movies, "metacritic", "DESC");
+denzel.movies$rank.metacritic = 1:nrow(denzel.movies);
+
+denzel.movies = sortDataFrameByNumericColumns(denzel.movies, "votes", "DESC");
+denzel.movies$rank.votes = 1:nrow(denzel.movies);
+
+denzel.movies = sortDataFrameByNumericColumns(denzel.movies, "year", "ASC");
+denzel.movies$rank.year = 1:nrow(denzel.movies);
+
+
+denzel.movies
+```
+
+```{r, calculate-denzel-year-percent}
+totalMillions = setNames(totalMillions, c('year','totalMillions','totalMillions2019'))
+denzel.movies.merged = merge(denzel.movies, totalMillions, by='year')
+denzel.movies.merged$millionsPercentOfYear = denzel.movies.merged$millions2019/denzel.movies.merged$totalMillions2019*100
+denzel.movies.merged[,c('year','rank','title','millionsPercentOfYear')]
+
+denzel.movies.impact = setNames(aggregate(denzel.movies.merged$millionsPercentOfYear, by=list(Category=denzel.movies.merged$year),FUN=sum, na.rm=TRUE),c('year','percentBoxOffice'))
+denzel.movies.impact
+```
+Shows how big of an impact each actor made in each year in terms of all money made from movies.
+```{r}
+
+will.movies.impact$actor = 'Will Smith'
+denzel.movies.impact$actor = 'Denzel Washington'
+both.movies = merge(will.movies.impact, denzel.movies.impact, by=c('year','percentBoxOffice'),all=T)
+both.movies[(is.na(both.movies$actor.x)),'actor.x'] = both.movies[is.na(both.movies$actor.x), 'actor.y']
+both.movies = subset(both.movies, select= - c(actor.y))
+names(both.movies)[names(both.movies) == 'actor.x'] = 'actor'
+p = ggplot() +
+  geom_line(data = both.movies[both.movies$year < 2020,], aes(x=year,y=percentBoxOffice, color=actor)) +
+  xlab('Year') + ylab('Percent of Total Box Office Dollars') + ggtitle('Total Box Office Gross Explained by Will or Denzel Films')
+print(p)
+```
+Look to see who is more successful when being versatile in their roles.
+```{r, genre-investigation-will}
+will.test = will.movies
+movieGenres = strsplit(will.test$genre, ',')
+
+genre1 = c()
+genre2 = c()
+genre3 = c()
+for(genreList in movieGenres){
+  genre1 = c(genre1, genreList[1])
+  genre2 = c(genre2, genreList[2])
+  genre3 = c(genre3, genreList[3])
+}
+will.test$genre1 = genre1
+will.test$genre2 = genre2
+will.test$genre3 = genre3
+
+genre1Mil = setNames(aggregate(list(will.test$millions2019), by=list(will.test$genre1), FUN=sum, na.rm=TRUE), c('genre','millions2019'))
+genre1Meta = setNames(aggregate(list(will.test$metacritic), by=list(will.test$genre1), FUN=sum, na.rm=TRUE), c('genre','metacritic'))
+genre1Count = setNames(aggregate(metacritic~genre1,FUN=length, data=will.test), c('genre','count'))
+genres1 = merge(merge(genre1Mil,genre1Meta, by='genre'),genre1Count, by='genre')
+
+genre2Mil = setNames(aggregate(list(will.test$millions2019), by=list(will.test$genre2), FUN=sum, na.rm=TRUE), c('genre','millions2019'))
+genre2Meta = setNames(aggregate(list(will.test$metacritic), by=list(will.test$genre2), FUN=sum, na.rm=TRUE), c('genre','metacritic'))
+genre2Count = setNames(aggregate(metacritic~genre2,FUN=length, data=will.test), c('genre','count'))
+genres2 = merge(merge(genre2Mil,genre2Meta, by='genre'),genre2Count, by='genre')
+
+genre3Mil = setNames(aggregate(list(will.test$millions2019), by=list(will.test$genre3), FUN=sum, na.rm=TRUE), c('genre','millions2019'))
+genre3Meta = setNames(aggregate(list(will.test$metacritic), by=list(will.test$genre3), FUN=sum, na.rm=TRUE), c('genre','metacritic'))
+genre3Count = setNames(aggregate(metacritic~genre3,FUN=length, data=will.test), c('genre','count'))
+genres3 = merge(merge(genre3Mil,genre3Meta, by='genre'),genre3Count, by='genre')
+
+allGenres = rbind(rbind(genres1, genres2),genres3)
+allGenres$genre = trimws(allGenres$genre)
+will.genres = setNames(aggregate(list(allGenres$millions2019, allGenres$metacritic, allGenres$count), by=list(allGenres$genre), FUN=sum, na.rm=TRUE),c('genre','millions2019','metacritic','count'))
+
+will.genres$metacritic = will.genres$metacritic / will.genres$count
+will.genres$millions2019 = round(will.genres$millions2019,2)
+will.genres$metacritic = round(will.genres$metacritic,2)
+```
+
+```{r, genre-investigation-will}
+denzel.test = denzel.movies
+movieGenres = strsplit(denzel.test$genre, ',')
+
+genre1 = c()
+genre2 = c()
+genre3 = c()
+for(genreList in movieGenres){
+  genre1 = c(genre1, genreList[1])
+  genre2 = c(genre2, genreList[2])
+  genre3 = c(genre3, genreList[3])
+}
+denzel.test$genre1 = genre1
+denzel.test$genre2 = genre2
+denzel.test$genre3 = genre3
+
+genre1Mil = setNames(aggregate(list(denzel.test$millions2019), by=list(denzel.test$genre1), FUN=sum, na.rm=TRUE), c('genre','millions2019'))
+genre1Meta = setNames(aggregate(list(denzel.test$metacritic), by=list(denzel.test$genre1), FUN=sum, na.rm=TRUE), c('genre','metacritic'))
+genre1Count = setNames(aggregate(metacritic~genre1,FUN=length, data=denzel.test), c('genre','count'))
+genres1 = merge(merge(genre1Mil,genre1Meta, by='genre'),genre1Count, by='genre')
+
+genre2Mil = setNames(aggregate(list(denzel.test$millions2019), by=list(denzel.test$genre2), FUN=sum, na.rm=TRUE), c('genre','millions2019'))
+genre2Meta = setNames(aggregate(list(denzel.test$metacritic), by=list(denzel.test$genre2), FUN=sum, na.rm=TRUE), c('genre','metacritic'))
+genre2Count = setNames(aggregate(metacritic~genre2,FUN=length, data=denzel.test), c('genre','count'))
+genres2 = merge(merge(genre2Mil,genre2Meta, by='genre'),genre2Count, by='genre')
+
+genre3Mil = setNames(aggregate(list(denzel.test$millions2019), by=list(denzel.test$genre3), FUN=sum, na.rm=TRUE), c('genre','millions2019'))
+genre3Meta = setNames(aggregate(list(denzel.test$metacritic), by=list(denzel.test$genre3), FUN=sum, na.rm=TRUE), c('genre','metacritic'))
+genre3Count = setNames(aggregate(metacritic~genre3,FUN=length, data=denzel.test), c('genre','count'))
+genres3 = merge(merge(genre3Mil,genre3Meta, by='genre'),genre3Count, by='genre')
+
+allGenres = rbind(rbind(genres1, genres2),genres3)
+allGenres$genre = trimws(allGenres$genre)
+denzel.genres = setNames(aggregate(list(allGenres$millions2019, allGenres$metacritic, allGenres$count), by=list(allGenres$genre), FUN=sum, na.rm=TRUE),c('genre','millions2019','metacritic','count'))
+
+denzel.genres$metacritic = denzel.genres$metacritic / denzel.genres$count
+
+denzel.genres$millions2019 = round(denzel.genres$millions2019,2)
+denzel.genres$metacritic = round(denzel.genres$metacritic,2)
+```
+
+```{r, genre-plots}
+library(gridExtra)
+will.top5 = head(will.genres,5)
+denzel.top5 = head(denzel.genres,5)
+maxMil = max(will.top5$millions2019, denzel.top5$millions2019)
+maxCount = max(will.top5$count, denzel.top5$count)
+maxMeta = max(will.top5$metacritic, denzel.top5$metacritic)
+
+willGenresMilPlot = ggplot(data=will.top5,aes(x=genre,y=millions2019)) + geom_bar(stat='identity',fill='blue') +
+  scale_x_discrete(limits=will.top5$genre) + ggtitle('Will\'s Movie Earnings by Genre') + ylim(0,maxMil)
+
+denzelGenresMilPlot = ggplot(data=denzel.top5,aes(x=genre,y=millions2019)) + geom_bar(stat='identity',fill='red') +
+  scale_x_discrete(limits=denzel.top5$genre) + ggtitle('Denzel\'s Movie Earnings by Genre') + ylim(0,maxMil)
+
+willGenresCountPlot = ggplot(data=will.top5,aes(x=genre,y=count)) + geom_bar(stat='identity',fill='blue') +
+  scale_x_discrete(limits=will.top5$genre) + ggtitle('Will\'s Movies by Genre') + ylim(0,maxCount)
+
+denzelGenresCountPlot = ggplot(data=denzel.top5,aes(x=genre,y=count)) + geom_bar(stat='identity',fill='red') +
+  scale_x_discrete(limits=denzel.top5$genre) + ggtitle('Denzel\'s Movies by Genre') + ylim(0,maxCount)
+
+willGenresMetaPlot = ggplot(data=will.top5,aes(x=genre,y=metacritic)) + geom_bar(stat='identity',fill='blue') +
+  scale_x_discrete(limits=will.top5$genre) + ggtitle('Will\'s Movie Score by Genre') + ylim(0,100)
+
+denzelGenresMetaPlot = ggplot(data=denzel.top5,aes(x=genre,y=metacritic)) + geom_bar(stat='identity',fill='red') +
+  scale_x_discrete(limits=denzel.top5$genre) + ggtitle('Denzel\'s Movie Score by Genre') + ylim(0,100)
+
+denzelGenresMetaPlot
+grid.arrange(willGenresCountPlot, denzelGenresCountPlot, willGenresMilPlot, denzelGenresMilPlot, willGenresMetaPlot, denzelGenresMetaPlot,  nrow=3, ncol = 2)    
+```
+
+```{r}
+denzel.movies
+will.movies
+```
+```{r, ratings}
+movieRatings = c('Not Rated', 'G', 'PG', 'PG-13', 'R')
+
+denzelRated = table(denzel.movies$rated[denzel.movies$rated %in% movieRatings])
+denzelRated = as.data.frame(t(data.frame(rbind(denzelRated))))
+denzelRated$ratings = rownames(denzelRated)
+willRated = table(will.movies$rated[will.movies$rated %in% movieRatings])
+willRated = as.data.frame(t(data.frame(rbind(willRated))))
+willRated$ratings = rownames(willRated)
+
+
+allMovies = imdb.data$all.actors.movies
+
+allMovies = allMovies[!is.na(allMovies$votes),]
+allMovies = allMovies[allMovies$votes > 1000000,]
+allMovies = allMovies[order(-allMovies$ratings),]
+top25 = head(allMovies,30)
+
+denzelRated = setNames(denzelRated, c('count','rating'))
+willRated = setNames(willRated, c('count','rating'))
+
+rownames(denzelRated) = c()
+rownames(willRated) = c()
+
+denzelRated = rbind(denzelRated, data.frame('count'=0,'rating'='G'))
+
+denzelRatedPie = ggplot(denzelRated, aes(x="", y=count, fill=rating)) +
+  geom_bar(stat="identity", width=1, color='white') +
+  coord_polar("y", start=0) +
+  theme_void()
+
+willRatedPie = ggplot(willRated, aes(x="", y=count, fill=rating)) +
+  geom_bar(stat="identity", width=1, color='white') +
+  coord_polar("y", start=0) +
+  theme_void()
+
+denzelRatedPie
+willRatedPie
+```
+
+
