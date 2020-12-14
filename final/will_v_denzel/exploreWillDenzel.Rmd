@@ -9,6 +9,8 @@ library(ggplot2)
 library(devtools);
 library(imdb);
 library(humanVerseWSU);
+library(grid)
+library(gridExtra)
 
 path.github = "https://raw.githubusercontent.com/MonteShaffer/humanVerseWSU/master/";
 
@@ -262,57 +264,103 @@ denzelGenresCountPlot = ggplot(data=denzel.top5,aes(x=genre,y=count)) + geom_bar
   scale_x_discrete(limits=denzel.top5$genre) + ggtitle('Denzel\'s Movies by Genre') + ylim(0,maxCount)
 
 willGenresMetaPlot = ggplot(data=will.top5,aes(x=genre,y=metacritic)) + geom_bar(stat='identity',fill='blue') +
-  scale_x_discrete(limits=will.top5$genre) + ggtitle('Will\'s Movie Score by Genre') + ylim(0,100)
+  scale_x_discrete(limits=will.top5$genre) + ggtitle('Will\'s Average Movie Score by Genre') + ylim(0,100)
 
 denzelGenresMetaPlot = ggplot(data=denzel.top5,aes(x=genre,y=metacritic)) + geom_bar(stat='identity',fill='red') +
-  scale_x_discrete(limits=denzel.top5$genre) + ggtitle('Denzel\'s Movie Score by Genre') + ylim(0,100)
+  scale_x_discrete(limits=denzel.top5$genre) + ggtitle('Denzel\'s Average Movie Score by Genre') + ylim(0,100)
 
 denzelGenresMetaPlot
 grid.arrange(willGenresCountPlot, denzelGenresCountPlot, willGenresMilPlot, denzelGenresMilPlot, willGenresMetaPlot, denzelGenresMetaPlot,  nrow=3, ncol = 2)    
 ```
 
-```{r}
-denzel.movies
-will.movies
-```
 ```{r, ratings}
 movieRatings = c('Not Rated', 'G', 'PG', 'PG-13', 'R')
 
 denzelRated = table(denzel.movies$rated[denzel.movies$rated %in% movieRatings])
 denzelRated = as.data.frame(t(data.frame(rbind(denzelRated))))
 denzelRated$ratings = rownames(denzelRated)
+rownames(denzelRated) = c()
+denzelRated = setNames(denzelRated, c('count','rating'))
+
 willRated = table(will.movies$rated[will.movies$rated %in% movieRatings])
 willRated = as.data.frame(t(data.frame(rbind(willRated))))
 willRated$ratings = rownames(willRated)
-
+rownames(willRated) = c()
+willRated = setNames(willRated, c('count','rating'))
 
 allMovies = imdb.data$all.actors.movies
-
 allMovies = allMovies[!is.na(allMovies$votes),]
 allMovies = allMovies[allMovies$votes > 1000000,]
 allMovies = allMovies[order(-allMovies$ratings),]
-top25 = head(allMovies,30)
-
-denzelRated = setNames(denzelRated, c('count','rating'))
-willRated = setNames(willRated, c('count','rating'))
-
-rownames(denzelRated) = c()
-rownames(willRated) = c()
+top25 = head(allMovies,25)
+top25Ratings = table(top25$rated[top25$rated %in% movieRatings])
+top25Ratings = as.data.frame(t(data.frame(rbind(top25Ratings))))
+top25Ratings$ratings = rownames(top25Ratings)
+rownames(top25Ratings) = c()
+top25Ratings = setNames(top25Ratings, c('count','rating'))
+top25Ratings
 
 denzelRated = rbind(denzelRated, data.frame('count'=0,'rating'='G'))
+top25Ratings = rbind(top25Ratings, data.frame('count'=c(0,0),'rating'=c('G','Not.Rated')))
 
-denzelRatedPie = ggplot(denzelRated, aes(x="", y=count, fill=rating)) +
-  geom_bar(stat="identity", width=1, color='white') +
-  coord_polar("y", start=0) +
-  theme_void()
+willRated$actor = 'Will'
+denzelRated$actor = 'Denzel'
+top25Ratings$actor = 'IMDB Top 25'
 
-willRatedPie = ggplot(willRated, aes(x="", y=count, fill=rating)) +
-  geom_bar(stat="identity", width=1, color='white') +
-  coord_polar("y", start=0) +
-  theme_void()
+denzelRated$count = denzelRated$count/sum(denzelRated$count)
+willRated$count = willRated$count/sum(willRated$count)
+top25Ratings$count = top25Ratings$count/sum(top25Ratings$count)
 
-denzelRatedPie
-willRatedPie
+bothRated = rbind(willRated,denzelRated)
+bothRated = rbind(bothRated, top25Ratings)
+bothRated$rating = as.factor(bothRated$rating)
+bothRated$actor = as.factor(bothRated$actor)
+
+#code sourced from https://stackoverflow.com/questions/52236249/plotting-multiple-pie-charts-with-label-in-one-plot
+ggplot(bothRated, aes("", count, fill = rating)) + 
+    geom_bar(stat = "identity", color = "white", size = 1) +
+    geom_text(aes(label = rating), 
+              position = position_stack(vjust = 0.5), 
+              color = "white", size = 3) +
+    coord_polar(theta = "y") +
+    facet_wrap(~ actor, ncol = 1, nrow=3) +
+    theme_void()
+
 ```
 
+Awards for each actor
+```{r, awards}
+awards = read.csv('awards.csv')
+colnames(awards)[1] = 'actor'
+
+require(tidyr)
+awards = gather(awards, variable,value, -actor)
+
+awardsPlot = ggplot(data = awards, aes(x = actor, y = value, fill = variable)) +
+  geom_col(position = position_dodge()) + ggtitle('Awards Nominations & Wins') +
+  xlab('Actor') + ylab('') + guides(fill=guide_legend(title="Awards")) + scale_y_discrete(limits=c(2,4,6,8))
+
+awardsPlot
+```
+
+```{r, box-plots}
+boxPlotWD = function(willColumn, denzelColumn, labelsVector=c('title','')){
+  a = data.frame(group='Will',value=willColumn)
+  b = data.frame(group='Denzel',value=denzelColumn)
+  plot.data = rbind(a, b)
+  ggplot(plot.data, aes(x=group,y=value, fill=group)) + 
+    geom_boxplot() +
+    labs(title=labelsVector[1],x='',y=labelsVector[2])
+}
+
+boxPlotWD(will.movies$minutes, denzel.movies$minutes, c('Length of Films', 'Minutes'))
+boxPlotWD(will.movies$year, denzel.movies$year, c('Film Releases by Year', 'Year'))
+boxPlotWD(will.movies$metacritic, denzel.movies$metacritic, c('Film Metacritic Scores', 'Metacritic Score'))
+boxPlotWD(will.movies$rating, denzel.movies$rating, c('IMDB Film Ratings', 'IMDB Rating'))
+boxPlotWD(will.movies$millions2019, denzel.movies$millions2019, c('Film Box Office Gross', 'Dollars in Millions (2019)'))
+```
+
+```{r}
+will.movies
+```
 
