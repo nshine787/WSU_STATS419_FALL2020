@@ -112,7 +112,7 @@ Shine\vspace{0.05in} \newline\normalsize\emph{Washington State
 University}  }
 
 
-\date{November 09, 2020}
+\date{December 14, 2020}
 \setcounter{secnumdepth}{3}
 
 \usepackage{titlesec}
@@ -384,7 +384,7 @@ proportions; data collection; correlation investigation \par
     
     \hbox{\vrule height .2pt width 39.14pc}
     \vskip 5pt 
-    \hfill \textbf{\textcolor{WSU.gray}{ November 09, 2020 } }
+    \hfill \textbf{\textcolor{WSU.gray}{ December 14, 2020 } }
     \vskip 5pt 
     
 \end{abstract}
@@ -688,10 +688,10 @@ referenced in this document.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(devtools);       }\CommentTok{\# required for source\_url}
+\FunctionTok{library}\NormalTok{(devtools);       }\CommentTok{\# required for source\_url}
 
-\NormalTok{path.humanVerseWSU =}\StringTok{ "https://raw.githubusercontent.com/MonteShaffer/humanVerseWSU/"}
-\KeywordTok{source\_url}\NormalTok{( }\KeywordTok{paste0}\NormalTok{(path.humanVerseWSU,}\StringTok{"master/misc/functions{-}project{-}measure.R"}\NormalTok{) );}
+\NormalTok{path.humanVerseWSU }\OtherTok{=} \StringTok{"https://raw.githubusercontent.com/MonteShaffer/humanVerseWSU/"}
+\FunctionTok{source\_url}\NormalTok{( }\FunctionTok{paste0}\NormalTok{(path.humanVerseWSU,}\StringTok{"master/misc/functions{-}project{-}measure.R"}\NormalTok{) );}
 \end{Highlighting}
 \end{Shaded}
 
@@ -699,21 +699,21 @@ Below is the code to load the data and prepare it for analysis.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{path.to.secret =}\StringTok{ "C:/Users/Nathan/Dropbox/\_\_student\_access\_\_/\_SECRET\_/"}\NormalTok{;}
+\NormalTok{path.to.secret }\OtherTok{=} \StringTok{"C:/Users/Nathan/Dropbox/\_\_student\_access\_\_/\_SECRET\_/"}\NormalTok{;}
 
-\NormalTok{measure =}\StringTok{ }\NormalTok{utils}\OperatorTok{::}\KeywordTok{read.csv}\NormalTok{( }\KeywordTok{paste0}\NormalTok{(path.to.secret, }\StringTok{"measure{-}students.txt"}\NormalTok{), }
-                           \DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{quote=}\StringTok{""}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"|"}\NormalTok{);}
-\NormalTok{path.my.github =}\StringTok{ "https://raw.githubusercontent.com/nshine787/WSU\_STATS419\_FALL2020/"}\NormalTok{;}
-\KeywordTok{source\_url}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(path.my.github, }\StringTok{\textquotesingle{}master/functions/functions{-}project{-}measure.R\textquotesingle{}}\NormalTok{))}
+\NormalTok{measure }\OtherTok{=}\NormalTok{ utils}\SpecialCharTok{::}\FunctionTok{read.csv}\NormalTok{( }\FunctionTok{paste0}\NormalTok{(path.to.secret, }\StringTok{"measure{-}students.txt"}\NormalTok{), }
+                           \AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{quote=}\StringTok{""}\NormalTok{, }\AttributeTok{sep=}\StringTok{"|"}\NormalTok{);}
+\NormalTok{path.my.github }\OtherTok{=} \StringTok{"https://raw.githubusercontent.com/nshine787/WSU\_STATS419\_FALL2020/"}\NormalTok{;}
+\FunctionTok{source\_url}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(path.my.github, }\StringTok{\textquotesingle{}master/functions/functions{-}project{-}measure.R\textquotesingle{}}\NormalTok{))}
 
-\NormalTok{relevantColumns =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}height\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}}
+\NormalTok{relevantColumns }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}height\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}}
 \StringTok{                    hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)}
-\NormalTok{measure.df =}\StringTok{ }\KeywordTok{prepareMeasureData}\NormalTok{(measure);}
-\NormalTok{measure.males.df =}\StringTok{ }\KeywordTok{grabGenderRows}\NormalTok{(measure.df,}\StringTok{\textquotesingle{}m\textquotesingle{}}\NormalTok{)[,relevantColumns]}
-\NormalTok{measure.females.df =}\StringTok{ }\KeywordTok{grabGenderRows}\NormalTok{(measure.df,}\StringTok{\textquotesingle{}f\textquotesingle{}}\NormalTok{)[,relevantColumns]}
+\NormalTok{measure.df }\OtherTok{=} \FunctionTok{prepareMeasureData}\NormalTok{(measure);}
+\NormalTok{measure.males.df }\OtherTok{=} \FunctionTok{grabGenderRows}\NormalTok{(measure.df,}\StringTok{\textquotesingle{}m\textquotesingle{}}\NormalTok{)[,relevantColumns]}
+\NormalTok{measure.females.df }\OtherTok{=} \FunctionTok{grabGenderRows}\NormalTok{(measure.df,}\StringTok{\textquotesingle{}f\textquotesingle{}}\NormalTok{)[,relevantColumns]}
 
-\NormalTok{proportions.male =}\StringTok{ }\NormalTok{measure.males.df}\OperatorTok{/}\NormalTok{measure.males.df}\OperatorTok{$}\NormalTok{height}
-\NormalTok{proportions.female =}\StringTok{ }\NormalTok{measure.females.df}\OperatorTok{/}\NormalTok{measure.females.df}\OperatorTok{$}\NormalTok{height}
+\NormalTok{proportions.male }\OtherTok{=}\NormalTok{ measure.males.df}\SpecialCharTok{/}\NormalTok{measure.males.df}\SpecialCharTok{$}\NormalTok{height}
+\NormalTok{proportions.female }\OtherTok{=}\NormalTok{ measure.females.df}\SpecialCharTok{/}\NormalTok{measure.females.df}\SpecialCharTok{$}\NormalTok{height}
 \end{Highlighting}
 \end{Shaded}
 
@@ -725,10 +725,10 @@ sample as seen in Figure \ref{fig:ge-plot}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{barplot}\NormalTok{(}\KeywordTok{sort}\NormalTok{(}\KeywordTok{table}\NormalTok{(measure.df}\OperatorTok{$}\NormalTok{ethnicity),}\DataTypeTok{decreasing=}\OtherTok{TRUE}\NormalTok{), }\DataTypeTok{main =} \StringTok{\textquotesingle{}Ethnicity\textquotesingle{}}\NormalTok{,}
-        \DataTypeTok{ylab =} \StringTok{\textquotesingle{}Number of Subjects\textquotesingle{}}\NormalTok{)}
-\KeywordTok{barplot}\NormalTok{(}\KeywordTok{sort}\NormalTok{(}\KeywordTok{table}\NormalTok{(measure.df}\OperatorTok{$}\NormalTok{gender),}\DataTypeTok{decreasing=}\OtherTok{TRUE}\NormalTok{), }\DataTypeTok{main =} \StringTok{\textquotesingle{}Gender\textquotesingle{}}\NormalTok{, }
-        \DataTypeTok{ylab =} \StringTok{\textquotesingle{}Number of Subjects\textquotesingle{}}\NormalTok{)}
+\FunctionTok{barplot}\NormalTok{(}\FunctionTok{sort}\NormalTok{(}\FunctionTok{table}\NormalTok{(measure.df}\SpecialCharTok{$}\NormalTok{ethnicity),}\AttributeTok{decreasing=}\ConstantTok{TRUE}\NormalTok{), }\AttributeTok{main =} \StringTok{\textquotesingle{}Ethnicity\textquotesingle{}}\NormalTok{,}
+        \AttributeTok{ylab =} \StringTok{\textquotesingle{}Number of Subjects\textquotesingle{}}\NormalTok{)}
+\FunctionTok{barplot}\NormalTok{(}\FunctionTok{sort}\NormalTok{(}\FunctionTok{table}\NormalTok{(measure.df}\SpecialCharTok{$}\NormalTok{gender),}\AttributeTok{decreasing=}\ConstantTok{TRUE}\NormalTok{), }\AttributeTok{main =} \StringTok{\textquotesingle{}Gender\textquotesingle{}}\NormalTok{, }
+        \AttributeTok{ylab =} \StringTok{\textquotesingle{}Number of Subjects\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -738,38 +738,38 @@ created by Monte Shaffer, the instructor of the STAT 419 class at WSU.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{path.tables =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(path.project,}\StringTok{\textquotesingle{}PROJECT{-}01/tables/\textquotesingle{}}\NormalTok{)}
-\NormalTok{file.correlation =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(path.tables,}\StringTok{"male{-}correlation{-}table.tex"}\NormalTok{);}
+\NormalTok{path.tables }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(path.project,}\StringTok{\textquotesingle{}PROJECT{-}01/tables/\textquotesingle{}}\NormalTok{)}
+\NormalTok{file.correlation }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(path.tables,}\StringTok{"male{-}correlation{-}table.tex"}\NormalTok{);}
 
-\NormalTok{myData =}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(proportions.male);}
-\NormalTok{myData =}\StringTok{ }\NormalTok{myData[,}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{15}\NormalTok{)]}
+\NormalTok{myData }\OtherTok{=} \FunctionTok{as.matrix}\NormalTok{(proportions.male);}
+\NormalTok{myData }\OtherTok{=}\NormalTok{ myData[,}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{15}\NormalTok{)]}
 
-\KeywordTok{buildLatexCorrelationTable}\NormalTok{(myData, }
-  \DataTypeTok{rotateTable =} \OtherTok{FALSE}\NormalTok{,}
-  \DataTypeTok{width.table =} \DecValTok{1}\NormalTok{,}
-  \DataTypeTok{width.names =} \StringTok{"30mm"}\NormalTok{,}
-  \DataTypeTok{myFile =}\NormalTok{ file.correlation,}
-  \DataTypeTok{round.digits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}
-  \DataTypeTok{myLabel =} \StringTok{"table:correlation{-}male"}\NormalTok{,}
-  \DataTypeTok{myCaption =} \StringTok{"Descriptive Statistics and Correlation Analysis (MALE)"}
+\FunctionTok{buildLatexCorrelationTable}\NormalTok{(myData, }
+  \AttributeTok{rotateTable =} \ConstantTok{FALSE}\NormalTok{,}
+  \AttributeTok{width.table =} \DecValTok{1}\NormalTok{,}
+  \AttributeTok{width.names =} \StringTok{"30mm"}\NormalTok{,}
+  \AttributeTok{myFile =}\NormalTok{ file.correlation,}
+  \AttributeTok{round.digits =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}
+  \AttributeTok{myLabel =} \StringTok{"table:correlation{-}male"}\NormalTok{,}
+  \AttributeTok{myCaption =} \StringTok{"Descriptive Statistics and Correlation Analysis (MALE)"}
 \NormalTok{  );}
-\KeywordTok{Sys.sleep}\NormalTok{(}\DecValTok{2}\NormalTok{);}
+\FunctionTok{Sys.sleep}\NormalTok{(}\DecValTok{2}\NormalTok{);}
 
-\NormalTok{file.correlation =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(path.tables,}\StringTok{"female{-}correlation{-}table.tex"}\NormalTok{);}
+\NormalTok{file.correlation }\OtherTok{=} \FunctionTok{paste0}\NormalTok{(path.tables,}\StringTok{"female{-}correlation{-}table.tex"}\NormalTok{);}
 
-\NormalTok{myData =}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(proportions.female);}
-\NormalTok{myData =}\StringTok{ }\NormalTok{myData[,}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{15}\NormalTok{)]}
+\NormalTok{myData }\OtherTok{=} \FunctionTok{as.matrix}\NormalTok{(proportions.female);}
+\NormalTok{myData }\OtherTok{=}\NormalTok{ myData[,}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{15}\NormalTok{)]}
 
-\KeywordTok{buildLatexCorrelationTable}\NormalTok{(myData, }
-  \DataTypeTok{rotateTable =} \OtherTok{FALSE}\NormalTok{,}
-  \DataTypeTok{width.table =} \DecValTok{1}\NormalTok{,}
-  \DataTypeTok{width.names =} \StringTok{"30mm"}\NormalTok{,}
-  \DataTypeTok{myFile =}\NormalTok{ file.correlation,}
-  \DataTypeTok{round.digits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}
-  \DataTypeTok{myLabel =} \StringTok{"table:correlation{-}female"}\NormalTok{,}
-  \DataTypeTok{myCaption =} \StringTok{"Descriptive Statistics and Correlation Analysis (FEMALE)"}
+\FunctionTok{buildLatexCorrelationTable}\NormalTok{(myData, }
+  \AttributeTok{rotateTable =} \ConstantTok{FALSE}\NormalTok{,}
+  \AttributeTok{width.table =} \DecValTok{1}\NormalTok{,}
+  \AttributeTok{width.names =} \StringTok{"30mm"}\NormalTok{,}
+  \AttributeTok{myFile =}\NormalTok{ file.correlation,}
+  \AttributeTok{round.digits =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{),}
+  \AttributeTok{myLabel =} \StringTok{"table:correlation{-}female"}\NormalTok{,}
+  \AttributeTok{myCaption =} \StringTok{"Descriptive Statistics and Correlation Analysis (FEMALE)"}
 \NormalTok{  );}
-\KeywordTok{Sys.sleep}\NormalTok{(}\DecValTok{2}\NormalTok{);}
+\FunctionTok{Sys.sleep}\NormalTok{(}\DecValTok{2}\NormalTok{);}
 \end{Highlighting}
 \end{Shaded}
 
@@ -777,15 +777,15 @@ Below is the code to generate the plots in Section \ref{sec:findings}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{proportions.both =}\StringTok{ }\KeywordTok{merge.data.frame}\NormalTok{(myDataMale,myDataFemale,}\DataTypeTok{all.x=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{proportions.both }\OtherTok{=} \FunctionTok{merge.data.frame}\NormalTok{(myDataMale,myDataFemale,}\AttributeTok{all.x=}\ConstantTok{TRUE}\NormalTok{)}
 
-\KeywordTok{plot}\NormalTok{(proportions.both}\OperatorTok{$}\NormalTok{hand.length,proportions.both}\OperatorTok{$}\NormalTok{head.height, }
-     \DataTypeTok{xlab =} \StringTok{\textquotesingle{}Hand Length Proportion\textquotesingle{}}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{\textquotesingle{}Head Height Proportion\textquotesingle{}}\NormalTok{)}
-\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(proportions.both}\OperatorTok{$}\NormalTok{head.height}\OperatorTok{\textasciitilde{}}\NormalTok{proportions.both}\OperatorTok{$}\NormalTok{hand.length), }\DataTypeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(proportions.both}\SpecialCharTok{$}\NormalTok{hand.length,proportions.both}\SpecialCharTok{$}\NormalTok{head.height, }
+     \AttributeTok{xlab =} \StringTok{\textquotesingle{}Hand Length Proportion\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}Head Height Proportion\textquotesingle{}}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(proportions.both}\SpecialCharTok{$}\NormalTok{head.height}\SpecialCharTok{\textasciitilde{}}\NormalTok{proportions.both}\SpecialCharTok{$}\NormalTok{hand.length), }\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
 
-\KeywordTok{plot}\NormalTok{(proportions.both}\OperatorTok{$}\NormalTok{hand.length, proportions.both}\OperatorTok{$}\NormalTok{foot.length, }
-     \DataTypeTok{xlab =} \StringTok{\textquotesingle{}Hand Length Proportion\textquotesingle{}}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{\textquotesingle{}Foot Length Proportion\textquotesingle{}}\NormalTok{)}
-\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(proportions.both}\OperatorTok{$}\NormalTok{foot.length}\OperatorTok{\textasciitilde{}}\NormalTok{proportions.both}\OperatorTok{$}\NormalTok{hand.length), }\DataTypeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(proportions.both}\SpecialCharTok{$}\NormalTok{hand.length, proportions.both}\SpecialCharTok{$}\NormalTok{foot.length, }
+     \AttributeTok{xlab =} \StringTok{\textquotesingle{}Hand Length Proportion\textquotesingle{}}\NormalTok{, }\AttributeTok{ylab=}\StringTok{\textquotesingle{}Foot Length Proportion\textquotesingle{}}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(proportions.both}\SpecialCharTok{$}\NormalTok{foot.length}\SpecialCharTok{\textasciitilde{}}\NormalTok{proportions.both}\SpecialCharTok{$}\NormalTok{hand.length), }\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -800,17 +800,17 @@ significantly.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{myData =}\StringTok{ }\NormalTok{proportions.male[,}\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}
+\NormalTok{myData }\OtherTok{=}\NormalTok{ proportions.male[,}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}
 \NormalTok{                             ,}\StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)]}
-\NormalTok{proportions.vitruvian =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.125}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.1666667}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.25}\NormalTok{)}
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{dim}\NormalTok{(myData)[}\DecValTok{2}\NormalTok{])}
+\NormalTok{proportions.vitruvian }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\FloatTok{0.125}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.1666667}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.25}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{dim}\NormalTok{(myData)[}\DecValTok{2}\NormalTok{])}
 \NormalTok{\{}
-  \KeywordTok{print}\NormalTok{(}\KeywordTok{colnames}\NormalTok{(myData)[i])}
-\NormalTok{  test.result =}\StringTok{ }\KeywordTok{t.test}\NormalTok{(myData[,i], }\DataTypeTok{mu=}\NormalTok{proportions.vitruvian[i], }\DataTypeTok{alternative=}\StringTok{\textquotesingle{}two.sided\textquotesingle{}}\NormalTok{)}
-  \KeywordTok{print}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{p.value)}
-  \KeywordTok{print}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{conf.int)}
-\NormalTok{  error =}\StringTok{ }\KeywordTok{abs}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{]}\OperatorTok{{-}}\NormalTok{test.result}\OperatorTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{])}\OperatorTok{/}\NormalTok{proportions.vitruvian[i]}
-  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}Error percent: \textquotesingle{}}\NormalTok{,error))}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{colnames}\NormalTok{(myData)[i])}
+\NormalTok{  test.result }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(myData[,i], }\AttributeTok{mu=}\NormalTok{proportions.vitruvian[i], }\AttributeTok{alternative=}\StringTok{\textquotesingle{}two.sided\textquotesingle{}}\NormalTok{)}
+  \FunctionTok{print}\NormalTok{(test.result}\SpecialCharTok{$}\NormalTok{p.value)}
+  \FunctionTok{print}\NormalTok{(test.result}\SpecialCharTok{$}\NormalTok{conf.int)}
+\NormalTok{  error }\OtherTok{=} \FunctionTok{abs}\NormalTok{(test.result}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{{-}}\NormalTok{test.result}\SpecialCharTok{$}\NormalTok{conf.int[}\DecValTok{2}\NormalTok{])}\SpecialCharTok{/}\NormalTok{proportions.vitruvian[i]}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}Error percent: \textquotesingle{}}\NormalTok{,error))}
   
 \NormalTok{\}}
 \end{Highlighting}
@@ -818,17 +818,17 @@ significantly.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{myDataMale =}\StringTok{ }\NormalTok{proportions.male[,}\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}\NormalTok{,}
+\NormalTok{myDataMale }\OtherTok{=}\NormalTok{ proportions.male[,}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}\NormalTok{,}
                                  \StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)]}
-\NormalTok{myDataFemale =}\StringTok{ }\NormalTok{proportions.female[,}\KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}
+\NormalTok{myDataFemale }\OtherTok{=}\NormalTok{ proportions.female[,}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}head.height\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}arm.span\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}hand.length\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}foot.length\textquotesingle{}}
 \NormalTok{                                     ,}\StringTok{\textquotesingle{}floor.kneepit\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}shoulder.width\textquotesingle{}}\NormalTok{)]}
-\NormalTok{proportions.vitruvian =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.125}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.1666667}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.25}\NormalTok{)}
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{dim}\NormalTok{(myData)[}\DecValTok{2}\NormalTok{])}
+\NormalTok{proportions.vitruvian }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\FloatTok{0.125}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.1666667}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.25}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{dim}\NormalTok{(myData)[}\DecValTok{2}\NormalTok{])}
 \NormalTok{\{}
-  \KeywordTok{print}\NormalTok{(}\KeywordTok{colnames}\NormalTok{(myData)[i])}
-\NormalTok{  test.result =}\StringTok{ }\KeywordTok{t.test}\NormalTok{(myDataMale[,i],myDataFemale[,i])}
-  \KeywordTok{print}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{p.value)}
-  \KeywordTok{print}\NormalTok{(test.result}\OperatorTok{$}\NormalTok{conf.int)}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{colnames}\NormalTok{(myData)[i])}
+\NormalTok{  test.result }\OtherTok{=} \FunctionTok{t.test}\NormalTok{(myDataMale[,i],myDataFemale[,i])}
+  \FunctionTok{print}\NormalTok{(test.result}\SpecialCharTok{$}\NormalTok{p.value)}
+  \FunctionTok{print}\NormalTok{(test.result}\SpecialCharTok{$}\NormalTok{conf.int)}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}

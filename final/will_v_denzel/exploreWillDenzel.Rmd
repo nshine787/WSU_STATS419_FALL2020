@@ -52,7 +52,14 @@ totalMillions = totalMillions[(totalMillions$year >= min(inflation.df$year)) & (
 standardYear = 2019
 standardYearCol =paste0('millions',standardYear)
 totalMillions = standardizeDollarsInDataFrame(totalMillions, standardYear, "millions", "year",standardYearCol)
-plot(totalMillions$year,totalMillions$'millions2019')
+# plot(totalMillions$year,totalMillions$'millions2019')
+beginningCareers = data.frame(actor=factor(c('Denzel','Will')), firstMovie = c(min(denzel.movies$year, na.rm=T), min(will.movies$year, na.rm=T)))
+ggplot(data=totalMillions, aes(x=year,y=millions2019)) + geom_point() +
+  labs(title='Box Office Revenue by Year',x='Year',y='Dollars in Millions (2019)') +
+  geom_vline(data = beginningCareers, aes(xintercept=firstMovie, color=actor))
+  # geom_vline(aes(xintercept = min(denzel.movies$year, na.rm=T), color='blue')) +
+  # geom_vline(aes(xintercept = min(will.movies$year, na.rm=T), color='red')) +
+  # scale_color_manual(values = c("red","blue"))
 totalMillions
 ```
 
@@ -200,9 +207,11 @@ will.genres = setNames(aggregate(list(allGenres$millions2019, allGenres$metacrit
 will.genres$metacritic = will.genres$metacritic / will.genres$count
 will.genres$millions2019 = round(will.genres$millions2019,2)
 will.genres$metacritic = round(will.genres$metacritic,2)
+
+will.genres = will.genres[order(will.genres$count,decreasing=T),]
 ```
 
-```{r, genre-investigation-will}
+```{r, genre-investigation-denzel}
 denzel.test = denzel.movies
 movieGenres = strsplit(denzel.test$genre, ',')
 
@@ -241,6 +250,7 @@ denzel.genres$metacritic = denzel.genres$metacritic / denzel.genres$count
 
 denzel.genres$millions2019 = round(denzel.genres$millions2019,2)
 denzel.genres$metacritic = round(denzel.genres$metacritic,2)
+denzel.genres = denzel.genres[order(denzel.genres$count,decreasing=T),]
 ```
 
 ```{r, genre-plots}
@@ -324,7 +334,7 @@ ggplot(bothRated, aes("", count, fill = rating)) +
               color = "white", size = 3) +
     coord_polar(theta = "y") +
     facet_wrap(~ actor, ncol = 1, nrow=3) +
-    theme_void()
+    theme_void() + theme(legend.position = "none") 
 
 ```
 
@@ -332,7 +342,8 @@ Awards for each actor
 ```{r, awards}
 awards = read.csv('awards.csv')
 colnames(awards)[1] = 'actor'
-
+razzies = awards[,c('actor','razNoms','razWins')]
+awards = awards[,1:11]
 require(tidyr)
 awards = gather(awards, variable,value, -actor)
 
